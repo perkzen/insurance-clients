@@ -36,7 +36,7 @@ func (i *InsuranceRep) FindByUser(userId uint) Result {
 
 func (i *InsuranceRep) FindByRegistration(reg string) Result {
 	var insurance []models.Insurance
-	err := db.Client.Where(&models.Insurance{VehicleRegistration: reg}).Take(&insurance).Error
+	err := db.Client.Find(&insurance, "vehicle_registration = ?", reg).Error
 
 	if err != nil {
 		return Result{Error: err}

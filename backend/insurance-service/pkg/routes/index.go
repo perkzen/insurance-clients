@@ -13,7 +13,7 @@ func setInsuranceRouter(router *gin.Engine) {
 	controller := controllers.NewInsuranceController()
 	insuranceGroup.POST("/", controller.Save)
 	insuranceGroup.GET("/:userId", controller.GetByUserId)
-	insuranceGroup.POST("/vehicle/:reg", controller.GetByRegistration)
+	insuranceGroup.GET("/vehicle/:reg", controller.GetByRegistration)
 }
 
 func InitRouter() *gin.Engine {
