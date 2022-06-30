@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9252995a-88e1-4c5f-8f4c-3d2a9d960d80" name="Changes" comment="feat: rename">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-gateway/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../api-gateway/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-gateway/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../api-gateway/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-gateway/src/damage-claims/damage-claims.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../api-gateway/src/damage-claims/damage-claims.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-gateway/src/damage-claims/damage-claims.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../api-gateway/src/damage-claims/damage-claims.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-gateway/src/damage-claims/dto/create-claim.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../api-gateway/src/damage-claims/dto/create-claim.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-gateway/src/types/DamageClaim.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../api-gateway/src/types/DamageClaim.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" url="file:///opt/homebrew/Cellar/go/1.18.1/libexec" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2BIgW2x2DIr1e0qjwf0iTJRNHXe" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.format.on.save.advertiser.fired": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "/Users/domenperko",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="go build damage-claim-service/cmd" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="damage-claim-service" />
+      <working_directory value="$PROJECT_DIR$/../damage-claim-service" />
+      <kind value="PACKAGE" />
+      <package value="damage-claim-service/cmd" />
+      <directory value="$PROJECT_DIR$/../damage-claim-service" />
+      <filePath value="$PROJECT_DIR$/../damage-claim-service/cmd/main.go" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build damage-claim-service/cmd" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: rename" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: rename" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+</project>

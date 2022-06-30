@@ -2,7 +2,7 @@ export interface DamageClaim {
   id: number;
   userId: number;
   comment: string;
-  insurance: string;
+  insuranceId: number;
   date: string;
   CreatedAt: string;
   Status: ClaimStatus;

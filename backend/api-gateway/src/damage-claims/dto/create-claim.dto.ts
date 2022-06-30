@@ -11,8 +11,8 @@ export class CreateClaimDto {
   comment: string;
 
   @ApiProperty({ required: true })
-  @IsString()
-  insurance: string;
+  @IsNumber()
+  insuranceId: number;
 
   @ApiProperty({ required: true })
   @IsString()
