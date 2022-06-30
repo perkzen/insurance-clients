@@ -6,8 +6,10 @@ import (
 	"insurance-service/pkg/controllers"
 )
 
+const PREFIX = "/api/v1"
+
 func setInsuranceRouter(router *gin.Engine) {
-	insuranceGroup := router.Group("/insurance")
+	insuranceGroup := router.Group(PREFIX + "/insurance")
 	controller := controllers.NewInsuranceController()
 	insuranceGroup.POST("/", controller.Save)
 	insuranceGroup.GET("/:id", controller.GetByUserId)
