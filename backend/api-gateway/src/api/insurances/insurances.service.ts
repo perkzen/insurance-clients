@@ -2,7 +2,7 @@ import { HttpException, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { CreateInsuranceDto } from './dto/create-insurance.dto';
 import axios from 'axios';
-import { Insurance } from '../types/Insurance';
+import { Insurance } from '../../types/Insurance';
 
 @Injectable()
 export class InsurancesService {

@@ -1,9 +1,8 @@
 import os
-from os.path import exists
 import pickle
 import sys
 
-from flask import Flask, request, jsonify
+from flask import Flask, request
 import neptune.new as neptune
 import pandas as pd
 from dotenv import load_dotenv

@@ -2,7 +2,7 @@ import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { DamageClaimsService } from './damage-claims.service';
 import { ApiTags } from '@nestjs/swagger';
 import { CreateClaimDto } from './dto/create-claim.dto';
-import { DamageClaim } from '../types/DamageClaim';
+import { DamageClaim } from '../../types/DamageClaim';
 import { UpdateClaimDto } from './dto/update-claim.dto';
 
 @ApiTags('Damage claims')

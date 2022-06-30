@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEnum } from 'class-validator';
-import { ClaimStatus } from '../../types/DamageClaim';
+import { ClaimStatus } from '../../../types/DamageClaim';
 
 export class UpdateClaimDto {
   @ApiProperty({ required: true })

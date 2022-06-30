@@ -1,6 +1,6 @@
 import { IsEnum, IsNumber, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { InsuranceType, VehicleType } from '../../types/Insurance';
+import { InsuranceType, VehicleType } from '../../../types/Insurance';
 
 export class CreateInsuranceDto {
   @ApiProperty({ required: true })

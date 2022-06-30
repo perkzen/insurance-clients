@@ -1,4 +1,4 @@
-import { Gender, Relationship, Salary } from '../../types/InsuranceClient';
+import { Gender, Relationship, Salary } from '../../../types/InsuranceClient';
 import { IsEmail, IsEnum, IsNumber, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 

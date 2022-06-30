@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { InsuranceClientsModule } from './insurance-clients/insurance-clients.module';
+import { InsuranceClientsModule } from './api/insurance-clients/insurance-clients.module';
 import { ConfigModule } from '@nestjs/config';
-import { DamageClaimsModule } from './damage-claims/damage-claims.module';
-import { InsurancesModule } from './insurances/insurances.module';
+import { DamageClaimsModule } from './api/damage-claims/damage-claims.module';
+import { InsurancesModule } from './api/insurances/insurances.module';
+import { FraudDetectionModule } from './api/fraud-detection/fraud-detection.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { InsurancesModule } from './insurances/insurances.module';
     InsuranceClientsModule,
     DamageClaimsModule,
     InsurancesModule,
+    FraudDetectionModule,
   ],
   controllers: [AppController],
   providers: [AppService],

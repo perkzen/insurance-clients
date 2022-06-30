@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { InsurancesService } from './insurances.service';
 import { ApiTags } from '@nestjs/swagger';
-import { Insurance } from '../types/Insurance';
+import { Insurance } from '../../types/Insurance';
 import { CreateInsuranceDto } from './dto/create-insurance.dto';
 
 @ApiTags('Insurances')
