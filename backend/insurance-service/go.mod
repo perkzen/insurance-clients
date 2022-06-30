@@ -1,4 +1,4 @@
-module request-insurance
+module insurance-service
 
 go 1.18
 

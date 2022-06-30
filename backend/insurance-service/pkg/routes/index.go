@@ -3,7 +3,7 @@ package routes
 import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"request-insurance/pkg/controllers"
+	"insurance-service/pkg/controllers"
 )
 
 func setInsuranceRouter(router *gin.Engine) {

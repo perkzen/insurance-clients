@@ -2,9 +2,9 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
+	"insurance-service/pkg/dto"
+	"insurance-service/pkg/services"
 	"net/http"
-	"request-insurance/pkg/dto"
-	"request-insurance/pkg/services"
 	"strconv"
 )
 

@@ -3,9 +3,9 @@ package db
 import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"insurance-service/pkg/models"
+	"insurance-service/pkg/utils"
 	"log"
-	"request-insurance/pkg/models"
-	"request-insurance/pkg/utils"
 )
 
 var Client *gorm.DB

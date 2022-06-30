@@ -1,7 +1,7 @@
 package models
 
 import (
-	"request-insurance/pkg/types"
+	"insurance-service/pkg/types"
 	"time"
 )
 

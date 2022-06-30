@@ -1,9 +1,9 @@
 package dto
 
 import (
-	"request-insurance/pkg/models"
-	"request-insurance/pkg/types"
-	"request-insurance/pkg/utils"
+	"insurance-service/pkg/models"
+	"insurance-service/pkg/types"
+	"insurance-service/pkg/utils"
 )
 
 type InsuranceDTO struct {

@@ -1,9 +1,9 @@
 package services
 
 import (
-	"request-insurance/pkg/dto"
-	"request-insurance/pkg/models"
-	"request-insurance/pkg/repository"
+	"insurance-service/pkg/dto"
+	"insurance-service/pkg/models"
+	"insurance-service/pkg/repository"
 )
 
 type InsuranceService struct {

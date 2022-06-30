@@ -1,10 +1,10 @@
 package main
 
 import (
+	"insurance-service/pkg/db"
+	"insurance-service/pkg/routes"
+	"insurance-service/pkg/utils"
 	"log"
-	"request-insurance/pkg/db"
-	"request-insurance/pkg/routes"
-	"request-insurance/pkg/utils"
 )
 
 func main() {

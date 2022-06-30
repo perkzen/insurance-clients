@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"request-insurance/pkg/db"
-	"request-insurance/pkg/models"
+	"insurance-service/pkg/db"
+	"insurance-service/pkg/models"
 )
 
 type InsuranceRep struct {
