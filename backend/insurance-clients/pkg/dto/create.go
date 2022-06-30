@@ -28,6 +28,7 @@ func ConvertToUser(dto *UserDTO) (*models.User, error) {
 		Firstname:          dto.Firstname,
 		Lastname:           dto.Lastname,
 		Email:              dto.Email,
+		Gender:             dto.Gender,
 		Birthday:           &date,
 		RelationshipStatus: dto.RelationshipStatus,
 		Children:           dto.Children,

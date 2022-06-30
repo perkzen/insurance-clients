@@ -3,7 +3,6 @@ package repository
 import (
 	"insurance-clients/pkg/db"
 	"insurance-clients/pkg/models"
-	"strconv"
 )
 
 type UserRep struct{}
@@ -62,12 +61,16 @@ func (u *UserRep) Update(id uint, data *models.User) Result {
 }
 
 func (u *UserRep) Delete(id uint) Result {
-	err := db.Client.Delete(&models.User{ID: id}).Error
+	found := u.FindOne(id)
+	if found.Error != nil {
+		return Result{Error: found.Error}
+	}
 
+	err := db.Client.Delete(&models.User{ID: id}).Error
 	if err != nil {
 		return Result{Error: err}
 	}
 
-	return Result{Data: "User with id " + strconv.Itoa(int(id)) + " was deleted."}
+	return Result{Data: found.Data}
 
 }
