@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { InsuranceClientsModule } from './insurance-clients/insurance-clients.module';
 import { ConfigModule } from '@nestjs/config';
 import { DamageClaimsModule } from './damage-claims/damage-claims.module';
+import { InsurancesModule } from './insurances/insurances.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { DamageClaimsModule } from './damage-claims/damage-claims.module';
     }),
     InsuranceClientsModule,
     DamageClaimsModule,
+    InsurancesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

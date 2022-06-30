@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b5fd3e1-7a25-419e-99a7-f86f7a0a440e" name="Changes" comment="feat: submit claim working">
-      <change afterPath="$PROJECT_DIR$/src/damage-claims/dto/update-claim.dto.ts" afterDir="false" />
+    <list default="true" id="2b5fd3e1-7a25-419e-99a7-f86f7a0a440e" name="Changes" comment="fix: ignore">
+      <change afterPath="$PROJECT_DIR$/src/insurances/dto/create-insurance.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/insurances/insurances.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/insurances/insurances.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/insurances/insurances.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/Insurance.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/damage-claims/damage-claims.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/damage-claims/damage-claims.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/damage-claims/damage-claims.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/damage-claims/damage-claims.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../compensation-manager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../compensation-manager/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../insurance-service/pkg/repository/insurance.go" beforeDir="false" afterPath="$PROJECT_DIR$/../insurance-service/pkg/repository/insurance.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +91,7 @@
       <workItem from="1656586274372" duration="156000" />
       <workItem from="1656586437194" duration="869000" />
       <workItem from="1656587325006" duration="1771000" />
-      <workItem from="1656589113115" duration="8963000" />
+      <workItem from="1656589113115" duration="12685000" />
     </task>
     <task id="LOCAL-00001" summary="feat: api gateway">
       <created>1656586485587</created>
@@ -153,7 +156,21 @@
       <option name="project" value="LOCAL" />
       <updated>1656599732786</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="feat: damage claims finished">
+      <created>1656601348128</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1656601348128</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fix: ignore">
+      <created>1656601373250</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1656601373250</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,7 +198,9 @@
     <MESSAGE value="feat: add damage claims" />
     <MESSAGE value="feat: submit claim" />
     <MESSAGE value="feat: submit claim working" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: submit claim working" />
+    <MESSAGE value="feat: damage claims finished" />
+    <MESSAGE value="fix: ignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: ignore" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
