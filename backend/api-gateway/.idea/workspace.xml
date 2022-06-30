@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b5fd3e1-7a25-419e-99a7-f86f7a0a440e" name="Changes" comment="feat: insurance clients service complete">
-      <change beforePath="$PROJECT_DIR$/src/insurance-clients/insurance-clients.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/insurance-clients/insurance-clients.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/insurance-clients/insurance-clients.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/insurance-clients/insurance-clients.service.ts" afterDir="false" />
+    <list default="true" id="2b5fd3e1-7a25-419e-99a7-f86f7a0a440e" name="Changes" comment="feat: add swagger">
+      <change beforePath="$PROJECT_DIR$/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/insurance-clients/dto/update-insurance-client.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/insurance-clients/dto/update-insurance-client.dto.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +85,7 @@
       <workItem from="1656586274372" duration="156000" />
       <workItem from="1656586437194" duration="869000" />
       <workItem from="1656587325006" duration="1771000" />
-      <workItem from="1656589113115" duration="5548000" />
+      <workItem from="1656589113115" duration="5870000" />
     </task>
     <task id="LOCAL-00001" summary="feat: api gateway">
       <created>1656586485587</created>
@@ -122,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656597387863</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat: add swagger">
+      <created>1656597461502</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1656597461502</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,7 +153,8 @@
     <MESSAGE value="feat: add user controller" />
     <MESSAGE value="feat: connect to first service" />
     <MESSAGE value="feat: insurance clients service complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: insurance clients service complete" />
+    <MESSAGE value="feat: add swagger" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add swagger" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
