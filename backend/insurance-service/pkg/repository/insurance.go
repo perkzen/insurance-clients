@@ -25,7 +25,7 @@ func (i *InsuranceRep) Save(insurance *models.Insurance) Result {
 func (i *InsuranceRep) FindByUser(userId uint) Result {
 	var insurance []models.Insurance
 
-	err := db.Client.Where(&models.Insurance{UserId: userId}).Take(&insurance).Error
+	err := db.Client.Find(&insurance, "user_id = ?", userId).Error
 
 	if err != nil {
 		return Result{Error: err}
