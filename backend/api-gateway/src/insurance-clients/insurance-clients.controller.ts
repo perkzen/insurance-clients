@@ -1,11 +1,21 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { InsuranceClientsService } from './insurance-clients.service';
 import { CreateInsuranceClientDto } from './dto/create-insurance-client.dto';
 import { UpdateInsuranceClientDto } from './dto/update-insurance-client.dto';
 
 @Controller('insurance-clients')
 export class InsuranceClientsController {
-  constructor(private readonly insuranceClientsService: InsuranceClientsService) {}
+  constructor(
+    private readonly insuranceClientsService: InsuranceClientsService,
+  ) {}
 
   @Post()
   create(@Body() createInsuranceClientDto: CreateInsuranceClientDto) {
@@ -13,17 +23,20 @@ export class InsuranceClientsController {
   }
 
   @Get()
-  findAll() {
-    return this.insuranceClientsService.findAll();
+  async findAll() {
+    return await this.insuranceClientsService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.insuranceClientsService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return await this.insuranceClientsService.findOne(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateInsuranceClientDto: UpdateInsuranceClientDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateInsuranceClientDto: UpdateInsuranceClientDto,
+  ) {
     return this.insuranceClientsService.update(+id, updateInsuranceClientDto);
   }
 

@@ -1,19 +1,28 @@
 import { Injectable } from '@nestjs/common';
 import { CreateInsuranceClientDto } from './dto/create-insurance-client.dto';
 import { UpdateInsuranceClientDto } from './dto/update-insurance-client.dto';
+import axios from 'axios';
+
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class InsuranceClientsService {
+  constructor(private configService: ConfigService) {}
+
+  INSURANCE_CLIENTS_MICROSERVICE = this.configService.get(
+    'INSURANCE_CLIENTS_SERVICE_URL',
+  );
+
   create(createInsuranceClientDto: CreateInsuranceClientDto) {
     return 'This action adds a new insuranceClient';
   }
 
-  findAll() {
-    return `This action returns all insuranceClients`;
+  async findAll() {
+    return await axios.get(this.INSURANCE_CLIENTS_MICROSERVICE);
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} insuranceClient`;
+  async findOne(id: number) {
+    return await axios.get(`${this.INSURANCE_CLIENTS_MICROSERVICE}/${id}`);
   }
 
   update(id: number, updateInsuranceClientDto: UpdateInsuranceClientDto) {

@@ -9,7 +9,7 @@ import (
 const PREFIX = "/api/v1"
 
 func setUserRouter(router *gin.Engine) {
-	userGroup := router.Group(PREFIX + "/controllers")
+	userGroup := router.Group(PREFIX + "/clients")
 	controller := controllers.NewUserController()
 	userGroup.GET("/", controller.GetAll)
 	userGroup.GET("/:id", controller.GetOne)
