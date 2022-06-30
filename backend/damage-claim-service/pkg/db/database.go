@@ -1,8 +1,8 @@
 package db
 
 import (
-	"compensation-manager/pkg/models"
-	"compensation-manager/pkg/utils"
+	"damage-claim-service/pkg/models"
+	"damage-claim-service/pkg/utils"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"log"

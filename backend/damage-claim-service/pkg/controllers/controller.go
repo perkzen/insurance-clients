@@ -1,9 +1,9 @@
 package controllers
 
 import (
-	"compensation-manager/pkg/dto"
-	"compensation-manager/pkg/services"
-	"compensation-manager/pkg/types"
+	"damage-claim-service/pkg/dto"
+	"damage-claim-service/pkg/services"
+	"damage-claim-service/pkg/types"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"

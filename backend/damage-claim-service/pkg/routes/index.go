@@ -1,7 +1,7 @@
 package routes
 
 import (
-	c "compensation-manager/pkg/controllers"
+	c "damage-claim-service/pkg/controllers"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
@@ -9,7 +9,7 @@ import (
 const PREFIX = "/api/v1"
 
 func setCompensationManagerRouter(router *gin.Engine) {
-	managementGroup := router.Group(PREFIX + "/compensation-manager")
+	managementGroup := router.Group(PREFIX + "/damage-claim-service")
 	managementController := c.NewClaimController()
 	managementGroup.POST("/submit", managementController.SubmitClaim)
 	managementGroup.PUT("/review/:id", managementController.ReviewClaim)

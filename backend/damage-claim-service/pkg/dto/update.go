@@ -1,6 +1,6 @@
 package dto
 
-import "compensation-manager/pkg/types"
+import "damage-claim-service/pkg/types"
 
 type ReviewClaimDTO struct {
 	Status types.Status `json:"status"`

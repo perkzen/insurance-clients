@@ -1,9 +1,9 @@
 package main
 
 import (
-	"compensation-manager/pkg/db"
-	"compensation-manager/pkg/routes"
-	"compensation-manager/pkg/utils"
+	"damage-claim-service/pkg/db"
+	"damage-claim-service/pkg/routes"
+	"damage-claim-service/pkg/utils"
 	"log"
 )
 

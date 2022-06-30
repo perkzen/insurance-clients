@@ -1,9 +1,9 @@
 package repository
 
 import (
-	"compensation-manager/pkg/db"
-	"compensation-manager/pkg/models"
-	"compensation-manager/pkg/types"
+	"damage-claim-service/pkg/db"
+	"damage-claim-service/pkg/models"
+	"damage-claim-service/pkg/types"
 )
 
 type ClaimRep struct {

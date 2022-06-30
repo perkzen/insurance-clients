@@ -1,4 +1,4 @@
-module compensation-manager
+module damage-claim-service
 
 go 1.18
 

@@ -1,7 +1,7 @@
 package dto
 
 import (
-	"compensation-manager/pkg/models"
+	"damage-claim-service/pkg/models"
 	"time"
 )
 

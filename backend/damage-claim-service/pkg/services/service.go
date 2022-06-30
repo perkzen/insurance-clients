@@ -1,9 +1,9 @@
 package services
 
 import (
-	"compensation-manager/pkg/dto"
-	"compensation-manager/pkg/models"
-	"compensation-manager/pkg/repository"
+	"damage-claim-service/pkg/dto"
+	"damage-claim-service/pkg/models"
+	"damage-claim-service/pkg/repository"
 )
 
 type ClaimService struct {

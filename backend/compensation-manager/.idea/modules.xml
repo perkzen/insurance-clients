@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/compensation-manager.iml" filepath="$PROJECT_DIR$/.idea/compensation-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../damage-claim-service/.idea/damage-claim-service.iml" filepath="$PROJECT_DIR$/../damage-claim-service/.idea/damage-claim-service.iml" />
     </modules>
   </component>
 </project>

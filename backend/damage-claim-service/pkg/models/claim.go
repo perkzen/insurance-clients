@@ -1,7 +1,7 @@
 package models
 
 import (
-	"compensation-manager/pkg/types"
+	"damage-claim-service/pkg/types"
 	"time"
 )
 
