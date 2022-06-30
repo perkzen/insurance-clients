@@ -24,15 +24,21 @@ func (c *ClaimRep) Save(claim *models.Claim) Result {
 }
 
 func (c *ClaimRep) Update(id uint, status types.Status) Result {
-	var claim models.Claim
 
+	var claim models.Claim
 	err := db.Client.Model(&claim).Where("id = ?", id).Update("status", status).Error
 
 	if err != nil {
 		return Result{Error: err}
 	}
 
-	return Result{Data: claim}
+	return Result{Data: struct {
+		ID     uint         `json:"id"`
+		Status types.Status `json:"status"`
+	}{
+		ID:     id,
+		Status: status,
+	}}
 }
 
 func (c *ClaimRep) FindOne(id uint) Result {
