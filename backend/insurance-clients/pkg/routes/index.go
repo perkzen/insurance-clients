@@ -6,7 +6,7 @@ import (
 	"insurance-clients/pkg/controllers"
 )
 
-const PREFIX = "/controllers/v1"
+const PREFIX = "/api/v1"
 
 func setUserRouter(router *gin.Engine) {
 	userGroup := router.Group(PREFIX + "/controllers")
