@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b5fd3e1-7a25-419e-99a7-f86f7a0a440e" name="Changes" comment="feat: add user controller">
+    <list default="true" id="2b5fd3e1-7a25-419e-99a7-f86f7a0a440e" name="Changes" comment="feat: connect to first service">
+      <change afterPath="$PROJECT_DIR$/src/types/InsuranceClient.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/microservices.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/insurance-clients/dto/create-insurance-client.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/insurance-clients/dto/create-insurance-client.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/insurance-clients/insurance-clients.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/insurance-clients/insurance-clients.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/insurance-clients/insurance-clients.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/insurance-clients/insurance-clients.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../insurance-clients/pkg/routes/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/../insurance-clients/pkg/routes/index.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +88,7 @@
       <workItem from="1656586274372" duration="156000" />
       <workItem from="1656586437194" duration="869000" />
       <workItem from="1656587325006" duration="1771000" />
-      <workItem from="1656589113115" duration="3260000" />
+      <workItem from="1656589113115" duration="4927000" />
     </task>
     <task id="LOCAL-00001" summary="feat: api gateway">
       <created>1656586485587</created>
@@ -114,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656590152884</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat: connect to first service">
+      <created>1656595199964</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1656595199964</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,7 +140,8 @@
     <MESSAGE value="feat: api gateway" />
     <MESSAGE value="feat: add firebase" />
     <MESSAGE value="feat: add user controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add user controller" />
+    <MESSAGE value="feat: connect to first service" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: connect to first service" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
