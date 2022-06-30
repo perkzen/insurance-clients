@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9252995a-88e1-4c5f-8f4c-3d2a9d960d80" name="Changes" comment="feat: rename">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../api-gateway/src/damage-claims/dto/update-claim.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../api-gateway/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../api-gateway/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api-gateway/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../api-gateway/src/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../api-gateway/src/damage-claims/damage-claims.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../api-gateway/src/damage-claims/damage-claims.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../api-gateway/src/damage-claims/damage-claims.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../api-gateway/src/damage-claims/damage-claims.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api-gateway/src/damage-claims/dto/create-claim.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../api-gateway/src/damage-claims/dto/create-claim.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api-gateway/src/types/DamageClaim.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../api-gateway/src/types/DamageClaim.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../damage-claim-service/pkg/repository/claim.go" beforeDir="false" afterPath="$PROJECT_DIR$/../damage-claim-service/pkg/repository/claim.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
