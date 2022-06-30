@@ -11,7 +11,9 @@ import { InsuranceClientsService } from './insurance-clients.service';
 import { CreateInsuranceClientDto } from './dto/create-insurance-client.dto';
 import { UpdateInsuranceClientDto } from './dto/update-insurance-client.dto';
 import { InsuranceClient } from '../types/InsuranceClient';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Insurance clients')
 @Controller('insurance-clients')
 export class InsuranceClientsController {
   constructor(

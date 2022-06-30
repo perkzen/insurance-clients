@@ -1,10 +1,9 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { CreateInsuranceClientDto } from './dto/create-insurance-client.dto';
 import { UpdateInsuranceClientDto } from './dto/update-insurance-client.dto';
-import axios from 'axios';
-
 import { ConfigService } from '@nestjs/config';
 import { InsuranceClient } from '../types/InsuranceClient';
+import axios from 'axios';
 
 @Injectable()
 export class InsuranceClientsService {
