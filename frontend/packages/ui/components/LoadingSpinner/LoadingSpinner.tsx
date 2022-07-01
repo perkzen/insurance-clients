@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-const LoadingSpinner: FC = () => {
+export const LoadingSpinner: FC = () => {
   return (
     <svg
       className={`animate-spin -ml-1 mr-3 h-5 w-5 text-neutral-900`}
@@ -24,5 +24,3 @@ const LoadingSpinner: FC = () => {
     </svg>
   );
 };
-
-export default LoadingSpinner;

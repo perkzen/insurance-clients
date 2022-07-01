@@ -32,7 +32,7 @@ interface TableProps<T> {
   statusNegativeText?: string;
 }
 
-const Table = <T,>({
+export const Table = <T,>({
   data,
   headers,
   title,
@@ -204,5 +204,3 @@ const Table = <T,>({
     </div>
   );
 };
-
-export default Table;
