@@ -1,5 +1,5 @@
 {
-  "name": "ui",
+  "name": "manage-clients",
   "version": "0.0.0",
   "main": "./index.tsx",
   "types": "./index.tsx",
@@ -10,16 +10,12 @@
   "devDependencies": {
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
-    "@types/uuid": "^8.3.4",
     "config": "*",
     "eslint": "^7.32.0",
     "react": "^17.0.2",
     "tsconfig": "*",
     "typescript": "^4.5.2",
-    "utils": "*"
-  },
-  "dependencies": {
-    "react-icons": "^4.4.0",
-    "uuid": "^8.3.2"
+    "types": "*"
   }
 }
+

@@ -1,5 +1,6 @@
 .Container {
-  @apply w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-lg bg-red-600 text-sm font-medium text-white;
+  @apply w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-lg text-sm font-medium text-white;
   @apply disabled:opacity-90 disabled:cursor-not-allowed disabled:transform-none;
   @apply active:scale-90 ease-in-out duration-150;
+  @apply bg-red-600;
 }

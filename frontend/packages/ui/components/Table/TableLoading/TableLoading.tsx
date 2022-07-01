@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import classes from './TableLoading.module.scss';
-import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
+import { LoadingSpinner } from '../../LoadingSpinner/LoadingSpinner';
 
 const TableLoading: FC = () => {
   return (
