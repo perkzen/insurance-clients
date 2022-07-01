@@ -1,12 +1,12 @@
 package types
 
-type Relationship string
+type Relationship int
 type Gender string
-type Salary string
+type Income string
 
 const (
-	Married Relationship = "married"
-	Single  Relationship = "single"
+	Married Relationship = 1
+	Single  Relationship = 0
 )
 
 const (
@@ -15,7 +15,8 @@ const (
 )
 
 const (
-	Low  Salary = "low"
-	Mid  Salary = "mid"
-	High Salary = "high"
+	MINMAL        Income = "minmal"
+	BELOW_AVERAGE Income = "below average"
+	AVERAGE       Income = "average"
+	ABOVE_AVERAGE Income = "above average"
 )

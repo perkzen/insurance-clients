@@ -1,2 +1,5 @@
 import * as React from 'react';
-export * from './components/Button/Button';
+
+export { Button } from './components/Button/Button';
+
+export * from './components/LoadingSpinner/LoadingSpinner';

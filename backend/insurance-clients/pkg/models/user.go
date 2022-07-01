@@ -6,13 +6,13 @@ import (
 )
 
 type User struct {
-	ID                 uint               `gorm:"primary_key" json:"id"`
-	Firstname          string             `json:"firstname"`
-	Lastname           string             `json:"lastname"`
-	Email              string             `json:"email"`
-	Gender             types.Gender       `json:"gender"`
-	Birthday           *time.Time         `json:"birthday"`
-	RelationshipStatus types.Relationship `json:"relationshipStatus"`
-	Children           int                `json:"children"`
-	SalaryType         types.Salary       `json:"salaryType"`
+	ID        uint               `gorm:"primary_key" json:"id"`
+	Firstname string             `json:"firstname"`
+	Lastname  string             `json:"lastname"`
+	Email     string             `json:"email"`
+	Gender    types.Gender       `json:"gender"`
+	Birthday  *time.Time         `json:"birthday"`
+	Married   types.Relationship `json:"married"`
+	Children  int                `json:"children"`
+	Income    types.Income       `json:"income"`
 }

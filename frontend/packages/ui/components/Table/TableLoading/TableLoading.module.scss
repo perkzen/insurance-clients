@@ -1,0 +1,10 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    @apply text-primary;
+  }
+}

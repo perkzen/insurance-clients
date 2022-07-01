@@ -1,3 +1,5 @@
+import { IncomeType } from './FraudPrediction';
+
 export interface InsuranceClient {
   id: number;
   firstname: string;
@@ -5,23 +7,17 @@ export interface InsuranceClient {
   email: string;
   gender: Gender;
   birthday: string;
-  relationshipStatus: Relationship;
+  married: Relationship;
   children: number;
-  salaryType: Salary;
+  income: IncomeType;
 }
 
 export enum Relationship {
-  MARRIED = 'married',
-  SINGLE = 'single',
+  MARRIED = 1,
+  SINGLE = 0,
 }
 
 export enum Gender {
   MALE = 'male',
   FEMALE = 'female',
-}
-
-export enum Salary {
-  LOW = 'low',
-  MID = 'mid',
-  HIGH = 'high',
 }

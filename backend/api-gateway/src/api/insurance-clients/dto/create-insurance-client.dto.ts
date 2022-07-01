@@ -1,6 +1,7 @@
-import { Gender, Relationship, Salary } from '../../../types/InsuranceClient';
+import { Gender } from '../../../types/InsuranceClient';
 import { IsEmail, IsEnum, IsNumber, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+import { IncomeType, Married } from '../../../types/FraudPrediction';
 
 export class CreateInsuranceClientDto {
   @ApiProperty({ required: true })
@@ -24,14 +25,14 @@ export class CreateInsuranceClientDto {
   birthday: string;
 
   @ApiProperty({ required: true })
-  @IsEnum(Relationship)
-  relationshipStatus: Relationship;
+  @IsEnum(Married)
+  married: Married;
 
   @ApiProperty({ required: true })
   @IsNumber()
   children: number;
 
   @ApiProperty({ required: true })
-  @IsEnum(Salary)
-  salaryType: Salary;
+  @IsEnum(IncomeType)
+  income: IncomeType;
 }
