@@ -1,9 +1,9 @@
 import {
   ClaimStatus,
   Gender,
+  IncomeType,
   InsuranceType,
-  Relationship,
-  Salary,
+  Married,
   VehicleType,
 } from './enums';
 
@@ -27,9 +27,9 @@ export interface InsuranceClient {
   email: string;
   gender: Gender;
   birthday: string;
-  relationshipStatus: Relationship;
+  married: Married;
   children: number;
-  salaryType: Salary;
+  income: IncomeType;
 }
 
 export interface FraudPrediction {
