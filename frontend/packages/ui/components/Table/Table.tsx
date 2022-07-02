@@ -2,22 +2,19 @@ import React, { ReactNode } from 'react';
 import classes from './Table.module.scss';
 import { v4 } from 'uuid';
 import TableLoading from './TableLoading/TableLoading';
-import { Button } from '../Button/Button';
 
-export interface TableHeader<T> {
+export interface ITableHeader<T> {
   label: string;
   accessor: keyof T;
 }
 
 interface TableProps<T> {
   data: T[];
-  headers: TableHeader<T>[];
-  title: string;
+  headers: ITableHeader<T>[];
   className?: string;
-  buttonAction?: () => void;
-  buttonLabel?: string;
   isLoading?: boolean;
   emptyTableComponent: ReactNode;
+  tableHeaderComponent: ReactNode;
   onActionClick?: (item: T, status?: boolean) => void;
   onPrimaryActionClick?: (item: T) => void;
   onSecondaryActionClick?: (item: T) => void;
@@ -35,10 +32,8 @@ interface TableProps<T> {
 export const Table = <T,>({
   data,
   headers,
-  title,
-  buttonAction,
-  buttonLabel,
   emptyTableComponent,
+  tableHeaderComponent,
   isLoading,
   onActionClick,
   onRowClick,
@@ -55,14 +50,7 @@ export const Table = <T,>({
 }: TableProps<T>) => {
   return (
     <div className={classes.Container}>
-      <div className={classes.Header}>
-        <div>
-          <h1>{title}</h1>
-        </div>
-        <div>
-          {buttonLabel && <Button onClick={buttonAction}>{buttonLabel}</Button>}
-        </div>
-      </div>
+      {tableHeaderComponent}
       <div className="mt-8 flex flex-col">
         <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">

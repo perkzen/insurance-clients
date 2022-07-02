@@ -1,7 +1,7 @@
 const withTM = require('next-transpile-modules')([
   'ui',
   'utils',
-  'manage-clients',
+  'micro-frontends/manage-clients',
 ]);
 
 module.exports = withTM({

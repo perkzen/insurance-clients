@@ -1,11 +1,13 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
+import { ImUsers } from 'react-icons/im';
+import { FaCarCrash, FaFileContract } from 'react-icons/fa';
 import Link from 'next/link';
 
 const Navigation: FC = () => {
-  const items: { label: string; href: string }[] = [
-    { label: 'Manage clients', href: '' },
-    { label: 'Manage insurances', href: '' },
-    { label: 'Report claim', href: '' },
+  const items: { label: string; href: string; icon: ReactNode }[] = [
+    { label: 'Clients', href: '/', icon: <ImUsers /> },
+    { label: 'Insurances', href: '/', icon: <FaFileContract /> },
+    { label: 'Report claim', href: '/', icon: <FaCarCrash /> },
   ];
 
   return (
@@ -14,10 +16,14 @@ const Navigation: FC = () => {
         <div
           key={index}
           className={
-            'text-white text-center font-semibold border border-2 p-2 rounded-md shadow-2xl hover:bg-red-500'
+            'text-white text-center font-semibold  p-2 shadow-2xl bg-red-800 hover:bg-red-700 rounded-full'
           }
         >
-          <Link href={item.href}>{item.label}</Link>
+          <Link href={item.href}>
+            <a className={'flex flex-row justify-center items-center gap-2'}>
+              {item.icon} {item.label}
+            </a>
+          </Link>
         </div>
       ))}
     </div>

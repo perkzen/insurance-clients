@@ -13,4 +13,3 @@ export {
   Married,
   ClaimStatus,
 } from './insurance/enums';
-export { TableHeader } from './table/interfaces';

@@ -8,7 +8,9 @@
     justify-content: center;
 
     svg {
-      @apply bg-secondary p-2 rounded-full;
+      @apply bg-gray-100 p-2 rounded-full;
+      height: 50px;
+      width: 50px;
     }
 
   }

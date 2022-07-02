@@ -9,7 +9,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <div className={'flex flex-row h-screen'}>
       <Sidebar />
-      <main className={'py-10 px-20'}>{children}</main>
+      <main className={'py-10 px-20 w-full'}>{children}</main>
     </div>
   );
 };

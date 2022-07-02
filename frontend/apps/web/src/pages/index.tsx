@@ -1,10 +1,9 @@
-import { Button } from 'ui';
+import { ClientsTable } from '../../../../packages/micro-frontends/manage-clients';
 
 export default function Web() {
   return (
-    <div>
-      <h1>Web</h1>
-      <Button>Hello</Button>
-    </div>
+    <>
+      <ClientsTable />
+    </>
   );
 }
