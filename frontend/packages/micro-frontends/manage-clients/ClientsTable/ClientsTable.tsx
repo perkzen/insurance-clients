@@ -1,5 +1,5 @@
-import React from 'react';
-import { Table, TableHeader } from 'ui';
+import React, { FC, ReactNode } from 'react';
+import { Table } from 'ui';
 import { InsuranceClient } from 'shared-types';
 import { ITableHeader } from 'ui/components/Table/Table';
 import { EmptyTable } from 'ui';
@@ -13,7 +13,12 @@ const headers: ITableHeader<InsuranceClient>[] = [
   { label: 'Gender', accessor: 'gender' },
   { label: 'Birthday', accessor: 'birthday' },
 ];
-export const ClientsTable = () => {
+
+interface ClientsTableProps {
+  header: ReactNode;
+}
+
+export const ClientsTable: FC<ClientsTableProps> = ({ header }) => {
   const { data: res, isLoading } = useQuery('clients', () =>
     instance.get('insurance-clients')
   );
@@ -27,13 +32,7 @@ export const ClientsTable = () => {
         headers={headers}
         onRowClick={() => 1}
         emptyTableComponent={<EmptyTable title={'No data'} />}
-        tableHeaderComponent={
-          <TableHeader
-            title={'Company Clients'}
-            buttonLabel={'Add client'}
-            buttonAction={() => 1}
-          />
-        }
+        tableHeaderComponent={header}
       />
     </div>
   );
