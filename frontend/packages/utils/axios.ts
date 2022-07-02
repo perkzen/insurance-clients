@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BE_BASE_URL;
+const BASE_URL = 'http://localhost:8000/api/v1';
 
 const instance = axios.create({
   baseURL: BASE_URL,

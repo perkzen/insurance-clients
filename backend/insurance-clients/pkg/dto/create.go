@@ -7,14 +7,14 @@ import (
 )
 
 type UserDTO struct {
-	Firstname          string             `json:"firstname"`
-	Lastname           string             `json:"lastname"`
-	Email              string             `json:"email"`
-	Gender             types.Gender       `json:"gender"`
-	Birthday           string             `json:"birthday"`
-	RelationshipStatus types.Relationship `json:"relationshipStatus"`
-	Children           int                `json:"children"`
-	SalaryType         types.Salary       `json:"salaryType"`
+	Firstname string             `json:"firstname"`
+	Lastname  string             `json:"lastname"`
+	Email     string             `json:"email"`
+	Gender    types.Gender       `json:"gender"`
+	Birthday  string             `json:"birthday"`
+	Married   types.Relationship `json:"married"`
+	Children  int                `json:"children"`
+	Income    types.Income       `json:"income"`
 }
 
 func ConvertToUser(dto *UserDTO) (*models.User, error) {
@@ -25,13 +25,13 @@ func ConvertToUser(dto *UserDTO) (*models.User, error) {
 	}
 
 	return &models.User{
-		Firstname:          dto.Firstname,
-		Lastname:           dto.Lastname,
-		Email:              dto.Email,
-		Gender:             dto.Gender,
-		Birthday:           &date,
-		RelationshipStatus: dto.RelationshipStatus,
-		Children:           dto.Children,
-		SalaryType:         dto.SalaryType,
+		Firstname: dto.Firstname,
+		Lastname:  dto.Lastname,
+		Email:     dto.Email,
+		Gender:    dto.Gender,
+		Birthday:  &date,
+		Married:   dto.Married,
+		Children:  dto.Children,
+		Income:    dto.Income,
 	}, nil
 }

@@ -59,24 +59,24 @@ export const Table = <T,>({
                 <thead>
                   <tr>
                     {headers.map((header) => (
-                      <th key={v4()}>
+                      <th key={v4()} align={'center'}>
                         <span>{header.label}</span>
                       </th>
                     ))}
-                    {showStatus && (
-                      <th>
-                        <span>Status</span>
-                      </th>
-                    )}
-                    {onPrimaryActionClick && (
-                      <th scope="col" className="sr-only" colSpan={1} />
-                    )}
-                    {onSecondaryActionClick && (
-                      <th scope="col" className="sr-only" colSpan={1} />
-                    )}
-                    {onActionClick && (
-                      <th scope="col" className="sr-only" colSpan={1} />
-                    )}
+                    {/*{showStatus && (*/}
+                    {/*  <th>*/}
+                    {/*    <span>Status</span>*/}
+                    {/*  </th>*/}
+                    {/*)}*/}
+                    {/*{onPrimaryActionClick && (*/}
+                    {/*  <th scope="col" className="sr-only" colSpan={1} />*/}
+                    {/*)}*/}
+                    {/*{onSecondaryActionClick && (*/}
+                    {/*  <th scope="col" className="sr-only" colSpan={1} />*/}
+                    {/*)}*/}
+                    {/*{onActionClick && (*/}
+                    {/*  <th scope="col" className="sr-only" colSpan={1} />*/}
+                    {/*)}*/}
                   </tr>
                 </thead>
                 <tbody>
@@ -90,7 +90,7 @@ export const Table = <T,>({
                     <>
                       {data.length > 0 ? (
                         <>
-                          {data.map((dataItem, index) => (
+                          {data.map((dataItem) => (
                             <tr
                               key={v4()}
                               className={onRowClick && classes.Clickable}
@@ -109,19 +109,19 @@ export const Table = <T,>({
                                   }
                                 </td>
                               ))}
-                              {statusData && (
-                                <td>
-                                  {statusData[index] ? (
-                                    <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
-                                      {statusPositiveText}
-                                    </span>
-                                  ) : (
-                                    <span className="inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-red-800">
-                                      {statusNegativeText}
-                                    </span>
-                                  )}
-                                </td>
-                              )}
+                              {/*{statusData && (*/}
+                              {/*  <td>*/}
+                              {/*    {statusData[index] ? (*/}
+                              {/*      <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">*/}
+                              {/*        {statusPositiveText}*/}
+                              {/*      </span>*/}
+                              {/*    ) : (*/}
+                              {/*      <span className="inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-red-800">*/}
+                              {/*        {statusNegativeText}*/}
+                              {/*      </span>*/}
+                              {/*    )}*/}
+                              {/*  </td>*/}
+                              {/*)}*/}
 
                               {onPrimaryActionClick && (
                                 <td>
@@ -136,41 +136,43 @@ export const Table = <T,>({
                                   </button>
                                 </td>
                               )}
-                              {onSecondaryActionClick && (
-                                <td>
-                                  <button
-                                    type={'button'}
-                                    className={'text-accent'}
-                                    onClick={() =>
-                                      onSecondaryActionClick(dataItem)
-                                    }
-                                  >
-                                    {secondaryActionText}
-                                  </button>
-                                </td>
-                              )}
-                              {onActionClick && (
-                                <td colSpan={1}>
-                                  <button
-                                    type={'button'}
-                                    className={
-                                      !statusData || statusData[index]
-                                        ? 'text-red-600'
-                                        : 'text-green-600'
-                                    }
-                                    onClick={() =>
-                                      onActionClick(
-                                        dataItem,
-                                        statusData && statusData[index]
-                                      )
-                                    }
-                                  >
-                                    {!statusData || statusData[index]
-                                      ? statusActiveText
-                                      : statusInactiveText}
-                                  </button>
-                                </td>
-                              )}
+
+                              {/*{onSecondaryActionClick && (*/}
+                              {/*  <td>*/}
+                              {/*    <button*/}
+                              {/*      type={'button'}*/}
+                              {/*      className={'text-accent'}*/}
+                              {/*      onClick={() =>*/}
+                              {/*        onSecondaryActionClick(dataItem)*/}
+                              {/*      }*/}
+                              {/*    >*/}
+                              {/*      {secondaryActionText}*/}
+                              {/*    </button>*/}
+                              {/*  </td>*/}
+                              {/*)}*/}
+
+                              {/*{onActionClick && (*/}
+                              {/*  <td colSpan={1}>*/}
+                              {/*    <button*/}
+                              {/*      type={'button'}*/}
+                              {/*      className={*/}
+                              {/*        !statusData || statusData[index]*/}
+                              {/*          ? 'text-red-600'*/}
+                              {/*          : 'text-green-600'*/}
+                              {/*      }*/}
+                              {/*      onClick={() =>*/}
+                              {/*        onActionClick(*/}
+                              {/*          dataItem,*/}
+                              {/*          statusData && statusData[index]*/}
+                              {/*        )*/}
+                              {/*      }*/}
+                              {/*    >*/}
+                              {/*      {!statusData || statusData[index]*/}
+                              {/*        ? statusActiveText*/}
+                              {/*        : statusInactiveText}*/}
+                              {/*    </button>*/}
+                              {/*  </td>*/}
+                              {/*)}*/}
                             </tr>
                           ))}
                         </>
