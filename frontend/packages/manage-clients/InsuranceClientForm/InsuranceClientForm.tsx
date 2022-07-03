@@ -87,6 +87,8 @@ export const InsuranceClientForm: FC<InsuranceClientFormProps> = ({
         error: 'Error saving!',
       }
     );
+
+    !isEdit && reset();
   };
   return (
     <form className={'flex flex-col gap-4'} onSubmit={handleSubmit(onSubmit)}>
@@ -146,7 +148,11 @@ export const InsuranceClientForm: FC<InsuranceClientFormProps> = ({
       <Input
         label={'Children'}
         type={'number'}
-        {...register('children', { required: 'This field is required' })}
+        {...register('children', {
+          valueAsNumber: true,
+          min: 0,
+          required: 'This field is required',
+        })}
         errorMessage={errors.children?.message}
       />
       <Button>Save</Button>
