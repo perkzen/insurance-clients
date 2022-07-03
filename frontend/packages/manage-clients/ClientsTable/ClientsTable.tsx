@@ -6,6 +6,7 @@ import { EmptyTable } from 'ui';
 import { useQuery } from 'react-query';
 import axios, { AxiosResponse } from 'axios';
 import { BE_URL } from '../axios';
+import { format } from 'date-fns';
 
 const headers: ITableHeader<InsuranceClient>[] = [
   { label: 'Firstname', accessor: 'firstname' },
@@ -21,13 +22,21 @@ interface ClientsTableProps {
 }
 
 export const ClientsTable: FC<ClientsTableProps> = ({ header, onRowClick }) => {
-  const { data: response, isLoading } = useQuery('clients', () =>
-    axios.get(BE_URL).then((res) => res as AxiosResponse<InsuranceClient[]>)
+  const { data, isLoading } = useQuery('clients', () =>
+    axios.get(BE_URL).then(
+      (res) =>
+        res.data.map((item: InsuranceClient) => {
+          return {
+            ...item,
+            birthday: format(new Date(item.birthday), 'dd/MM/yyyy'),
+          };
+        }) as InsuranceClient[]
+    )
   );
 
   return (
     <Table
-      data={response ? response.data : []}
+      data={data ? data : []}
       isLoading={isLoading}
       headers={headers}
       onRowClick={(item: InsuranceClient) =>

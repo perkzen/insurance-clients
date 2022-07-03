@@ -6,7 +6,7 @@ import Link from 'next/link';
 const Navigation: FC = () => {
   const items: { label: string; href: string; icon: ReactNode }[] = [
     { label: 'Clients', href: '/', icon: <ImUsers /> },
-    { label: 'Insurances', href: '/', icon: <FaFileContract /> },
+    { label: 'Insurances', href: '/insurances', icon: <FaFileContract /> },
     { label: 'Report claim', href: '/', icon: <FaCarCrash /> },
   ];
 
