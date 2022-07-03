@@ -2,8 +2,9 @@ import React, { FC } from 'react';
 import { Button, Input, Select } from 'ui';
 import { useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
-import { BE_URL } from '../consts';
+import { BE_URL } from '../axios';
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 interface ClientFromData {
   firstname: string;
@@ -28,7 +29,7 @@ const defaultValues: ClientFromData = {
 };
 
 export const InsuranceClientForm: FC = () => {
-  const mutation = useMutation((newClient: ClientFromData) => {
+  const { mutateAsync } = useMutation((newClient: ClientFromData) => {
     return axios.post(BE_URL, newClient);
   });
 
@@ -38,9 +39,12 @@ export const InsuranceClientForm: FC = () => {
 
   const { errors } = formState;
 
-  const onSubmit = (data: ClientFromData) => {
-    console.log(data);
-    mutation.mutate(data);
+  const onSubmit = async (data: ClientFromData) => {
+    await toast.promise(mutateAsync(data), {
+      loading: 'Saving...',
+      success: 'Save!',
+      error: 'Error saving!',
+    });
   };
   return (
     <form className={'flex flex-col gap-4'} onSubmit={handleSubmit(onSubmit)}>
@@ -57,7 +61,7 @@ export const InsuranceClientForm: FC = () => {
         />
       </div>
       <Input
-        label={'email'}
+        label={'Email'}
         {...register('email', { required: 'This field is required' })}
         errorMessage={errors.email?.message}
       />

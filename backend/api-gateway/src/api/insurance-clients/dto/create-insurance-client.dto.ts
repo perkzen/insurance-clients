@@ -6,11 +6,11 @@ import { IncomeType, Married } from '../../../types/FraudPrediction';
 export class CreateInsuranceClientDto {
   @ApiProperty({ required: true })
   @IsString()
-  firstName: string;
+  firstname: string;
 
   @ApiProperty({ required: true })
   @IsString()
-  lastName: string;
+  lastname: string;
 
   @ApiProperty({ required: true })
   @IsEmail()
