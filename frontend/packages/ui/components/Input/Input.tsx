@@ -1,7 +1,6 @@
 import React, { forwardRef, HTMLProps } from 'react';
 import classes from './Input.module.scss';
-import { classNames } from '../../../utils/classNames';
-import './focus.scss';
+import { classNames } from 'utils';
 
 export interface InputProps extends HTMLProps<HTMLInputElement> {
   errorMessage?: string;
@@ -13,6 +12,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ errorMessage, className = '', label, ...props }, ref) => {
     return (
       <div className={classes.Container}>
+        <label>{label}</label>
         <input
           {...props}
           placeholder={' '}
@@ -22,7 +22,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             errorMessage ? classes.InputError : ''
           )}
         />
-        <label>{label}</label>
         {errorMessage && <small>{errorMessage}</small>}
       </div>
     );
