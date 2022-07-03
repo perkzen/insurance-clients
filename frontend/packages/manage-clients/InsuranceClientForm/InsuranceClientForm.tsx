@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { Button, Input, Select } from 'ui';
 import { useForm } from 'react-hook-form';
-import { useMutation, useQuery } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { BE_URL } from '../axios';
 import axios, { AxiosResponse } from 'axios';
 import { toast } from 'react-hot-toast';
@@ -37,8 +37,9 @@ export const InsuranceClientForm: FC<InsuranceClientFormProps> = ({
   clientId,
 }) => {
   const isEdit: boolean = !isNaN(clientId!);
+  const queryClient = useQueryClient();
 
-  const { data: res } = useQuery(
+  const { data: res, isLoading } = useQuery(
     'client',
     () =>
       axios
@@ -50,9 +51,14 @@ export const InsuranceClientForm: FC<InsuranceClientFormProps> = ({
     return axios.post(BE_URL, newClient);
   });
 
-  const updateClient = useMutation((newClient: ClientFromData) => {
-    return axios.put(`${BE_URL}/${clientId}`, newClient);
-  });
+  const updateClient = useMutation(
+    (newClient: ClientFromData) => {
+      return axios.put(`${BE_URL}/${clientId}`, newClient);
+    },
+    {
+      onSuccess: () => queryClient.invalidateQueries('client'),
+    }
+  );
 
   const { register, handleSubmit, formState, reset } = useForm<ClientFromData>({
     defaultValues,
@@ -63,20 +69,20 @@ export const InsuranceClientForm: FC<InsuranceClientFormProps> = ({
   useEffect(() => {
     const editingClient = (): ClientFromData => {
       if (!isEdit) {
-        return { ...defaultValues };
+        return defaultValues;
       }
 
       if (!res) {
-        return { ...defaultValues };
+        return defaultValues;
       }
+
       const bday = new Date(res.data.birthday);
       const bdayStr = format(bday, 'yyyy-MM-dd');
-      console.log(bdayStr);
       return { ...res.data, birthday: bdayStr };
     };
 
     reset(editingClient());
-  }, [isEdit, res, reset]);
+  }, [isEdit, res, reset, isLoading]);
 
   const onSubmit = async (data: ClientFromData) => {
     await toast.promise(
@@ -109,36 +115,30 @@ export const InsuranceClientForm: FC<InsuranceClientFormProps> = ({
         {...register('email', { required: 'This field is required' })}
         errorMessage={errors.email?.message}
       />
-      <Select
-        label={'Gender'}
-        options={[
-          { label: 'Male', value: 'male' },
-          { label: 'Female', value: 'female' },
-        ]}
-        {...register('gender', { required: 'This field is required' })}
-      />
+      <Select label={'Gender'} {...register('gender')}>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+      </Select>
       <Select
         label={'Income'}
-        options={[
-          { label: 'Low', value: 'minmal' },
-          { label: 'Below average', value: 'below average' },
-          { label: 'Average', value: 'average' },
-          { label: 'Above average', value: 'above average' },
-        ]}
         {...register('income', { required: 'This field is required' })}
-      />
+      >
+        <option value="minmal">Low</option>
+        <option value="below average">Below Average</option>
+        <option value="average">Average</option>
+        <option value="above average">Above average</option>
+      </Select>
       <Select
-        options={[
-          { label: 'Yes', value: 1 },
-          { label: 'No', value: 0 },
-        ]}
         label={'Married'}
         {...register('married', {
           valueAsNumber: true,
           min: 0,
           required: 'This field is required',
         })}
-      />
+      >
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </Select>
       <Input
         label={'Birthday'}
         type={'date'}
