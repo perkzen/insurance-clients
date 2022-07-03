@@ -5,11 +5,9 @@ export enum InsuranceType {
 }
 
 export enum VehicleType {
-  CAR = 'car',
-  MOTORCYCLE = 'motorcycle',
-  TRUCK = 'truck',
-  BUS = 'bus',
-  VAN = 'van',
+  Family = 'family',
+  Sport = 'sport',
+  Other = 'other',
 }
 
 export enum Gender {
