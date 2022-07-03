@@ -5,6 +5,7 @@ import { useMutation, useQuery } from 'react-query';
 import { BE_URL } from '../axios';
 import axios, { AxiosResponse } from 'axios';
 import { toast } from 'react-hot-toast';
+import { format } from 'date-fns';
 
 interface ClientFromData {
   firstname: string;
@@ -64,18 +65,28 @@ export const InsuranceClientForm: FC<InsuranceClientFormProps> = ({
       if (!isEdit) {
         return { ...defaultValues };
       }
-      return res ? res.data : defaultValues;
+
+      if (!res) {
+        return { ...defaultValues };
+      }
+      const bday = new Date(res.data.birthday);
+      const bdayStr = format(bday, 'yyyy-MM-dd');
+      console.log(bdayStr);
+      return { ...res.data, birthday: bdayStr };
     };
 
     reset(editingClient());
   }, [isEdit, res, reset]);
 
   const onSubmit = async (data: ClientFromData) => {
-    await toast.promise(addClient.mutateAsync(data), {
-      loading: 'Saving...',
-      success: 'Save!',
-      error: 'Error saving!',
-    });
+    await toast.promise(
+      isEdit ? updateClient.mutateAsync(data) : addClient.mutateAsync(data),
+      {
+        loading: 'Saving...',
+        success: 'Save!',
+        error: 'Error saving!',
+      }
+    );
   };
   return (
     <form className={'flex flex-col gap-4'} onSubmit={handleSubmit(onSubmit)}>
