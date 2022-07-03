@@ -1,5 +1,5 @@
 import React from 'react';
-import { InsuranceClientForm } from 'micro-frontends/manage-clients';
+import { InsuranceClientForm } from 'manage-clients';
 
 const Client = () => {
   return (

@@ -1,7 +1,7 @@
 const withTM = require('next-transpile-modules')([
   'ui',
-  'utils',
-  'micro-frontends/manage-clients',
+  'react-query',
+  'manage-clients',
 ]);
 
 module.exports = withTM({

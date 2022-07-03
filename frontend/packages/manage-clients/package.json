@@ -1,11 +1,11 @@
 {
   "name": "manage-clients",
   "version": "0.0.0",
-  "main": "index.tsx",
+  "main": "./index.tsx",
   "types": "./index.tsx",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint *.ts*"
+    "lint": "../micro-frontends/manage-clients/node_modules/.bin/eslint *.ts*"
   },
   "devDependencies": {
     "@types/react": "^17.0.37",
@@ -15,11 +15,11 @@
     "react": "^17.0.2",
     "shared-types": "*",
     "tsconfig": "*",
-    "typescript": "^4.5.2",
-    "utils": "*"
+    "typescript": "^4.5.2"
   },
   "dependencies": {
-    "react-query": "^3.39.1",
-    "react-hook-form": "^7.32.0"
+    "axios": "^0.27.2",
+    "react-hook-form": "^7.32.0",
+    "react-query": "^3.39.1"
   }
 }

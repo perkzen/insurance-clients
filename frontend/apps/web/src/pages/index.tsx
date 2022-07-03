@@ -1,7 +1,7 @@
-import { ClientsTable } from '../../../../packages/micro-frontends/manage-clients';
 import { TableHeader } from 'ui';
 import React from 'react';
 import { useRouter } from 'next/router';
+import { ClientsTable } from 'manage-clients';
 
 export default function InsuranceClientsTable() {
   const router = useRouter();

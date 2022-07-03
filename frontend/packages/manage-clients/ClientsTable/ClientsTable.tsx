@@ -4,7 +4,6 @@ import { InsuranceClient } from 'shared-types';
 import { ITableHeader } from 'ui/components/Table/Table';
 import { EmptyTable } from 'ui';
 import { useQuery } from 'react-query';
-import instance from 'utils/axios';
 
 const headers: ITableHeader<InsuranceClient>[] = [
   { label: 'Firstname', accessor: 'lastname' },
@@ -19,10 +18,13 @@ interface ClientsTableProps {
 }
 
 export const ClientsTable: FC<ClientsTableProps> = ({ header }) => {
-  const { data: res, isLoading } = useQuery('clients', () =>
-    instance.get('insurance-clients')
+  const { data, isLoading } = useQuery('clients', () =>
+    fetch('http://localhost:8000/api/v1/insurance-clients', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    }).then((res) => res.json())
   );
-  const data = res?.data as unknown as InsuranceClient[];
 
   return (
     <div>

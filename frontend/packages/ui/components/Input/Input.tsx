@@ -1,6 +1,6 @@
 import React, { forwardRef, HTMLProps } from 'react';
 import classes from './Input.module.scss';
-import { classNames } from 'utils';
+import { classNames } from '../../classNames';
 
 export interface InputProps extends HTMLProps<HTMLInputElement> {
   errorMessage?: string;
