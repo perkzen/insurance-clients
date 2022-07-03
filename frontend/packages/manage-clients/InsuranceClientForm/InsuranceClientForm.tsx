@@ -6,6 +6,7 @@ import { BE_URL } from '../axios';
 import axios, { AxiosResponse } from 'axios';
 import { toast } from 'react-hot-toast';
 import { format } from 'date-fns';
+import { useRouter } from 'next/router';
 
 interface ClientFromData {
   firstname: string;
@@ -38,6 +39,7 @@ export const InsuranceClientForm: FC<InsuranceClientFormProps> = ({
 }) => {
   const isEdit: boolean = !isNaN(clientId!);
   const queryClient = useQueryClient();
+  const router = useRouter();
 
   const { data: res, isLoading } = useQuery(
     'client',
@@ -59,6 +61,19 @@ export const InsuranceClientForm: FC<InsuranceClientFormProps> = ({
       onSuccess: () => queryClient.invalidateQueries('client'),
     }
   );
+
+  const deleteClient = useMutation(
+    () => axios.delete(`${BE_URL}/${clientId}`),
+    { onSuccess: () => router.push('/') }
+  );
+
+  const handleDelete = async () => {
+    await toast.promise(deleteClient.mutateAsync(), {
+      loading: 'Deleting...',
+      success: 'Client deleted!',
+      error: 'Error deleting!',
+    });
+  };
 
   const { register, handleSubmit, formState, reset } = useForm<ClientFromData>({
     defaultValues,
@@ -155,7 +170,14 @@ export const InsuranceClientForm: FC<InsuranceClientFormProps> = ({
         })}
         errorMessage={errors.children?.message}
       />
-      <Button>Save</Button>
+      <div className={'flex flex-row gap-2'}>
+        <Button>Save</Button>
+        {isEdit && (
+          <Button type={'button'} onClick={handleDelete}>
+            Delete
+          </Button>
+        )}
+      </div>
     </form>
   );
 };
