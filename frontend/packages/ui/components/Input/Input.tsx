@@ -15,7 +15,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         <label>{label}</label>
         <input
           {...props}
-          placeholder={' '}
           ref={ref}
           className={classNames(
             className,

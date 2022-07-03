@@ -1,9 +1,13 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, HTMLProps } from 'react';
 import classes from './Select.module.scss';
 import { v4 } from 'uuid';
 
-interface SelectProps {
-  options: { label: string; value: number | boolean | string }[];
+interface SelectProps extends HTMLProps<HTMLSelectElement> {
+  options: {
+    label: string;
+    value: number | boolean | string;
+    default?: boolean;
+  }[];
   label: string;
 }
 
