@@ -17,7 +17,8 @@
     "react-hot-toast": "^2.2.0",
     "react-query": "^3.39.1",
     "sass": "^1.53.0",
-    "ui": "*"
+    "ui": "*",
+    "shared-types": "*"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",

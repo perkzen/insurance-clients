@@ -94,11 +94,7 @@ export const Table = <T,>({
                             <tr
                               key={v4()}
                               className={onRowClick && classes.Clickable}
-                              onClick={(e: any) =>
-                                onRowClick &&
-                                e.target.type !== 'button' &&
-                                onRowClick(dataItem)
-                              }
+                              onClick={() => onRowClick && onRowClick(dataItem)}
                             >
                               {headers.map((header) => (
                                 <td key={v4()}>

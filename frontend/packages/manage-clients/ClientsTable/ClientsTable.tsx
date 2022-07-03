@@ -8,8 +8,8 @@ import axios, { AxiosResponse } from 'axios';
 import { BE_URL } from '../axios';
 
 const headers: ITableHeader<InsuranceClient>[] = [
-  { label: 'Firstname', accessor: 'lastname' },
-  { label: 'Lastname', accessor: 'firstname' },
+  { label: 'Firstname', accessor: 'firstname' },
+  { label: 'Lastname', accessor: 'lastname' },
   { label: 'Email', accessor: 'email' },
   { label: 'Gender', accessor: 'gender' },
   { label: 'Birthday', accessor: 'birthday' },
@@ -17,23 +17,24 @@ const headers: ITableHeader<InsuranceClient>[] = [
 
 interface ClientsTableProps {
   header: ReactNode;
+  onRowClick?: (client: InsuranceClient) => void;
 }
 
-export const ClientsTable: FC<ClientsTableProps> = ({ header }) => {
+export const ClientsTable: FC<ClientsTableProps> = ({ header, onRowClick }) => {
   const { data: response, isLoading } = useQuery('clients', () =>
     axios.get(BE_URL).then((res) => res as AxiosResponse<InsuranceClient[]>)
   );
 
   return (
-    <div>
-      <Table
-        data={response ? response.data : []}
-        isLoading={isLoading}
-        headers={headers}
-        onRowClick={() => 1}
-        emptyTableComponent={<EmptyTable title={'No data'} />}
-        tableHeaderComponent={header}
-      />
-    </div>
+    <Table
+      data={response ? response.data : []}
+      isLoading={isLoading}
+      headers={headers}
+      onRowClick={(item: InsuranceClient) =>
+        onRowClick ? onRowClick(item) : null
+      }
+      emptyTableComponent={<EmptyTable title={'No data'} />}
+      tableHeaderComponent={header}
+    />
   );
 };

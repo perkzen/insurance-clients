@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Button, Input, Select } from 'ui';
 import { useForm } from 'react-hook-form';
-import { useMutation } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import { BE_URL } from '../axios';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { toast } from 'react-hot-toast';
 
 interface ClientFromData {
@@ -28,19 +28,50 @@ const defaultValues: ClientFromData = {
   income: 'average',
 };
 
-export const InsuranceClientForm: FC = () => {
-  const { mutateAsync } = useMutation((newClient: ClientFromData) => {
+interface InsuranceClientFormProps {
+  clientId?: number;
+}
+
+export const InsuranceClientForm: FC<InsuranceClientFormProps> = ({
+  clientId,
+}) => {
+  const isEdit: boolean = !isNaN(clientId!);
+
+  const { data: res } = useQuery(
+    'client',
+    () =>
+      axios
+        .get(`${BE_URL}/${clientId}`)
+        .then((res) => res as AxiosResponse<ClientFromData>),
+    { enabled: isEdit }
+  );
+  const addClient = useMutation((newClient: ClientFromData) => {
     return axios.post(BE_URL, newClient);
   });
 
-  const { register, handleSubmit, formState } = useForm<ClientFromData>({
+  const updateClient = useMutation((newClient: ClientFromData) => {
+    return axios.put(`${BE_URL}/${clientId}`, newClient);
+  });
+
+  const { register, handleSubmit, formState, reset } = useForm<ClientFromData>({
     defaultValues,
   });
 
   const { errors } = formState;
 
+  useEffect(() => {
+    const editingClient = (): ClientFromData => {
+      if (!isEdit) {
+        return { ...defaultValues };
+      }
+      return res ? res.data : defaultValues;
+    };
+
+    reset(editingClient());
+  }, [isEdit, res, reset]);
+
   const onSubmit = async (data: ClientFromData) => {
-    await toast.promise(mutateAsync(data), {
+    await toast.promise(addClient.mutateAsync(data), {
       loading: 'Saving...',
       success: 'Save!',
       error: 'Error saving!',
