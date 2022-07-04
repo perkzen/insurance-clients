@@ -34,15 +34,15 @@ export class InsurancesController {
     return await this.insurancesService.findById(+id);
   }
 
-  @Get('user/:id')
-  async findByUser(@Param('id') id: string): Promise<Insurance[]> {
-    return await this.insurancesService.findByUser(+id);
-  }
-
-  @Get('vehicle/:reg')
-  async findByVehicle(@Param('reg') reg: string): Promise<Insurance[]> {
-    return await this.insurancesService.findByVehicle(reg);
-  }
+  // @Get('user/:id')
+  // async findByUser(@Param('id') id: string): Promise<Insurance[]> {
+  //   return await this.insurancesService.findByUser(+id);
+  // }
+  //
+  // @Get('vehicle/:reg')
+  // async findByVehicle(@Param('reg') reg: string): Promise<Insurance[]> {
+  //   return await this.insurancesService.findByVehicle(reg);
+  // }
 
   @Put(':id')
   async update(

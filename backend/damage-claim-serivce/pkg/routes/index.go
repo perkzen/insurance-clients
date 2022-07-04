@@ -14,6 +14,7 @@ func setCompensationManagerRouter(router *gin.Engine) {
 	managementGroup.POST("/submit", managementController.SubmitClaim)
 	managementGroup.PUT("/review/:id", managementController.ReviewClaim)
 	managementGroup.GET("/:id", managementController.GetClaim)
+	managementGroup.GET("/", managementController.GetAllClaims)
 }
 
 func InitRouter() *gin.Engine {

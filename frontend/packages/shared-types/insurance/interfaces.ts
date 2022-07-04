@@ -40,10 +40,10 @@ export interface FraudPrediction {
 
 export interface DamageClaim {
   id: number;
-  userId: number;
+  email: string;
   comment: string;
   insuranceId: number;
   date: string;
-  CreatedAt: string;
-  Status: ClaimStatus;
+  submittedAt: string;
+  status: ClaimStatus;
 }

@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import classes from './Table.module.scss';
 import { v4 } from 'uuid';
 import TableLoading from './TableLoading/TableLoading';
+import { ClaimStatus } from 'shared-types';
 
 export interface ITableHeader<T> {
   label: string;
@@ -15,20 +16,67 @@ interface TableProps<T> {
   isLoading?: boolean;
   emptyTableComponent: ReactNode;
   tableHeaderComponent: ReactNode;
-  onActionClick?: (item: T, status?: boolean) => void;
   onPrimaryActionClick?: (item: T) => void;
   onSecondaryActionClick?: (item: T) => void;
   primaryActionText?: string;
   secondaryActionText?: string;
   onRowClick?: (item: T) => void;
   showStatus?: boolean;
-  statusData?: boolean[];
-  statusActiveText?: string;
-  statusInactiveText?: string;
-  statusPositiveText?: string;
-  statusNegativeText?: string;
+  statusData?: string[];
   searchComponent?: ReactNode;
 }
+
+export const showStatusData = (status: string) => {
+  switch (status) {
+    case ClaimStatus.SUBMITTED:
+      return (
+        <td>
+          <span
+            className={`inline-flex rounded-full bg-neutral-100 px-2 text-xs font-semibold leading-5 text-neutral-700`}
+          >
+            {status}
+          </span>
+        </td>
+      );
+    case ClaimStatus.APPROVED:
+      return (
+        <td>
+          <span
+            className={`inline-flex rounded-full bg-green-200 px-2 text-xs font-semibold leading-5 text-green-800`}
+          >
+            {status}
+          </span>
+        </td>
+      );
+    case ClaimStatus.REJECTED:
+      return (
+        <td>
+          <span
+            className={`inline-flex rounded-full bg-red-200 px-2 text-xs font-semibold leading-5 text-red-800`}
+          >
+            {status}
+          </span>
+        </td>
+      );
+    default:
+      return <td>{status}</td>;
+  }
+};
+
+const getButtonColor = (
+  status: string,
+  type: 'primary' | 'secondary'
+): string => {
+  if (status === ClaimStatus.SUBMITTED && type === 'primary') {
+    return 'text-green-600 rounded-full bg-green-100 shadow py-2 px-4';
+  }
+
+  if (status === ClaimStatus.SUBMITTED && type === 'secondary') {
+    return 'text-red-600 rounded-full bg-red-100 shadow py-2 px-4';
+  }
+
+  return 'text-neutral-600 rounded-full bg-neutral-100 shadow py-2 px-4';
+};
 
 export const Table = <T,>({
   data,
@@ -36,7 +84,6 @@ export const Table = <T,>({
   emptyTableComponent,
   tableHeaderComponent,
   isLoading,
-  onActionClick,
   onRowClick,
   showStatus,
   statusData,
@@ -44,10 +91,6 @@ export const Table = <T,>({
   onSecondaryActionClick,
   primaryActionText,
   secondaryActionText,
-  statusActiveText,
-  statusInactiveText,
-  statusPositiveText,
-  statusNegativeText,
   searchComponent,
 }: TableProps<T>) => {
   return (
@@ -66,20 +109,18 @@ export const Table = <T,>({
                         <span>{header.label}</span>
                       </th>
                     ))}
-                    {/*{showStatus && (*/}
-                    {/*  <th>*/}
-                    {/*    <span>Status</span>*/}
-                    {/*  </th>*/}
-                    {/*)}*/}
-                    {/*{onPrimaryActionClick && (*/}
-                    {/*  <th scope="col" className="sr-only" colSpan={1} />*/}
-                    {/*)}*/}
-                    {/*{onSecondaryActionClick && (*/}
-                    {/*  <th scope="col" className="sr-only" colSpan={1} />*/}
-                    {/*)}*/}
-                    {/*{onActionClick && (*/}
-                    {/*  <th scope="col" className="sr-only" colSpan={1} />*/}
-                    {/*)}*/}
+                    {showStatus && (
+                      <th>
+                        <span>Status</span>
+                      </th>
+                    )}
+                    {onPrimaryActionClick && (
+                      <th scope="col" className="sr-only" colSpan={1} />
+                    )}
+                    {onSecondaryActionClick && (
+                      <th scope="col" className="sr-only" colSpan={1} />
+                    )}
+                    {statusData && <th />}
                   </tr>
                 </thead>
                 <tbody>
@@ -93,11 +134,15 @@ export const Table = <T,>({
                     <>
                       {data.length > 0 ? (
                         <>
-                          {data.map((dataItem) => (
+                          {data.map((dataItem, index) => (
                             <tr
                               key={v4()}
                               className={onRowClick && classes.Clickable}
-                              onClick={() => onRowClick && onRowClick(dataItem)}
+                              onClick={(e: any) =>
+                                onRowClick &&
+                                e.target.type !== 'button' &&
+                                onRowClick(dataItem)
+                              }
                             >
                               {headers.map((header) => (
                                 <td key={v4()}>
@@ -108,25 +153,18 @@ export const Table = <T,>({
                                   }
                                 </td>
                               ))}
-                              {/*{statusData && (*/}
-                              {/*  <td>*/}
-                              {/*    {statusData[index] ? (*/}
-                              {/*      <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">*/}
-                              {/*        {statusPositiveText}*/}
-                              {/*      </span>*/}
-                              {/*    ) : (*/}
-                              {/*      <span className="inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-red-800">*/}
-                              {/*        {statusNegativeText}*/}
-                              {/*      </span>*/}
-                              {/*    )}*/}
-                              {/*  </td>*/}
-                              {/*)}*/}
+                              {statusData && showStatusData(statusData[index])}
 
                               {onPrimaryActionClick && (
                                 <td>
                                   <button
                                     type={'button'}
-                                    className={'text-primary'}
+                                    className={getButtonColor(
+                                      statusData
+                                        ? statusData[index]
+                                        : 'no status',
+                                      'primary'
+                                    )}
                                     onClick={() =>
                                       onPrimaryActionClick(dataItem)
                                     }
@@ -136,42 +174,29 @@ export const Table = <T,>({
                                 </td>
                               )}
 
-                              {/*{onSecondaryActionClick && (*/}
-                              {/*  <td>*/}
-                              {/*    <button*/}
-                              {/*      type={'button'}*/}
-                              {/*      className={'text-accent'}*/}
-                              {/*      onClick={() =>*/}
-                              {/*        onSecondaryActionClick(dataItem)*/}
-                              {/*      }*/}
-                              {/*    >*/}
-                              {/*      {secondaryActionText}*/}
-                              {/*    </button>*/}
-                              {/*  </td>*/}
-                              {/*)}*/}
-
-                              {/*{onActionClick && (*/}
-                              {/*  <td colSpan={1}>*/}
-                              {/*    <button*/}
-                              {/*      type={'button'}*/}
-                              {/*      className={*/}
-                              {/*        !statusData || statusData[index]*/}
-                              {/*          ? 'text-red-600'*/}
-                              {/*          : 'text-green-600'*/}
-                              {/*      }*/}
-                              {/*      onClick={() =>*/}
-                              {/*        onActionClick(*/}
-                              {/*          dataItem,*/}
-                              {/*          statusData && statusData[index]*/}
-                              {/*        )*/}
-                              {/*      }*/}
-                              {/*    >*/}
-                              {/*      {!statusData || statusData[index]*/}
-                              {/*        ? statusActiveText*/}
-                              {/*        : statusInactiveText}*/}
-                              {/*    </button>*/}
-                              {/*  </td>*/}
-                              {/*)}*/}
+                              {onSecondaryActionClick && (
+                                <td>
+                                  <button
+                                    type={'button'}
+                                    className={getButtonColor(
+                                      statusData
+                                        ? statusData[index]
+                                        : 'no status',
+                                      'secondary'
+                                    )}
+                                    disabled={
+                                      statusData &&
+                                      statusData[index] !==
+                                        ClaimStatus.SUBMITTED
+                                    }
+                                    onClick={() =>
+                                      onSecondaryActionClick(dataItem)
+                                    }
+                                  >
+                                    {secondaryActionText}
+                                  </button>
+                                </td>
+                              )}
                             </tr>
                           ))}
                         </>

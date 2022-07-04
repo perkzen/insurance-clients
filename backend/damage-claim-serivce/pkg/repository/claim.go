@@ -51,3 +51,14 @@ func (c *ClaimRep) FindOne(id uint) Result {
 
 	return Result{Data: &claim}
 }
+
+func (c *ClaimRep) FindAll() Result {
+	var claim []models.Claim
+	res := db.Client.Find(&claim)
+
+	if res.Error != nil {
+		return Result{Error: res.Error}
+	}
+
+	return Result{Data: &claim}
+}

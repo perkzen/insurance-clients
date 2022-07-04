@@ -4,8 +4,8 @@ import { Button } from '../../Button/Button';
 
 interface TableHeaderProps {
   title: string;
-  buttonLabel: string;
-  buttonAction: () => void;
+  buttonLabel?: string;
+  buttonAction?: () => void;
 }
 
 export const TableHeader: FC<TableHeaderProps> = ({

@@ -27,4 +27,9 @@ export class DamageClaimsController {
   async findOne(@Param('id') id: number): Promise<DamageClaim> {
     return await this.damageClaimsService.FindOne(id);
   }
+
+  @Get()
+  async findAll(): Promise<DamageClaim[]> {
+    return await this.damageClaimsService.FindAll();
+  }
 }

@@ -47,4 +47,13 @@ export class DamageClaimsService {
       throw new HttpException(e.response.data.message, e.response.status);
     }
   }
+
+  async FindAll(): Promise<DamageClaim[]> {
+    try {
+      const { data } = await axios.get(`${this.DAMAGE_CLAIM_MICROSERVICE}`);
+      return data;
+    } catch (e) {
+      throw new HttpException(e.response.data.message, e.response.status);
+    }
+  }
 }

@@ -66,3 +66,20 @@ func (s *ClaimService) GetClaim(id uint) dto.Response {
 		Data:    res.Data,
 	}
 }
+
+func (s *ClaimService) GetAllClaims() dto.Response {
+	res := s.repository.FindAll()
+
+	if res.Error != nil {
+		return dto.Response{
+			Success: false,
+			Message: res.Error.Error(),
+		}
+	}
+
+	return dto.Response{
+		Success: true,
+		Message: "Claims found.",
+		Data:    res.Data,
+	}
+}

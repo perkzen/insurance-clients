@@ -90,3 +90,15 @@ func (con *ClaimController) GetClaim(c *gin.Context) {
 
 	c.JSON(http.StatusOK, res.Data)
 }
+
+func (con *ClaimController) GetAllClaims(c *gin.Context) {
+
+	res := con.service.GetAllClaims()
+
+	if res.Success == false {
+		c.AbortWithStatusJSON(http.StatusNotFound, gin.H{"message": res.Message})
+		return
+	}
+
+	c.JSON(http.StatusOK, res.Data)
+}
