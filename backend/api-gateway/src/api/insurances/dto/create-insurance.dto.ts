@@ -4,10 +4,6 @@ import { InsuranceType, VehicleType } from '../../../types/Insurance';
 
 export class CreateInsuranceDto {
   @ApiProperty({ required: true })
-  @IsNumber()
-  userId: number;
-
-  @ApiProperty({ required: true })
   @IsString()
   firstname: string;
 

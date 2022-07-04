@@ -76,7 +76,7 @@ export class InsurancesService {
   async filter(query: { firstname: string; lastname: string; reg: string }) {
     try {
       const { data } = await axios.get(this.INSURANCE_MICROSERVICE);
-      const d = data.filter((item: Insurance) => {
+      return data.filter((item: Insurance) => {
         if (
           item.firstname.includes(query.firstname) &&
           query.firstname !== ''
@@ -93,8 +93,6 @@ export class InsurancesService {
         }
         return false;
       });
-      console.log(d);
-      return d;
     } catch (e) {
       throw new HttpException(e.response.data.message, e.response.status);
     }

@@ -7,7 +7,7 @@ const Navigation: FC = () => {
   const items: { label: string; href: string; icon: ReactNode }[] = [
     { label: 'Clients', href: '/', icon: <ImUsers /> },
     { label: 'Insurances', href: '/insurances', icon: <FaFileContract /> },
-    { label: 'Report claim', href: '/', icon: <FaCarCrash /> },
+    { label: 'Damage reports', href: '/damage-claims', icon: <FaCarCrash /> },
   ];
 
   return (

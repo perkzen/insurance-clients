@@ -19,7 +19,8 @@
     "sass": "^1.53.0",
     "ui": "*",
     "shared-types": "*",
-    "manage-insurances": "*"
+    "manage-insurances": "*",
+    "manage-damage-claims": "*"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",

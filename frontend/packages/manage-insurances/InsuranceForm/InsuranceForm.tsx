@@ -133,14 +133,6 @@ export const InsuranceForm: FC<InsuranceFormProps> = ({ insuranceId }) => {
             errorMessage={errors.lastname?.message}
           />
         </div>
-        <Input
-          label={'Vehicle registration number'}
-          {...register('vehicleRegistration', {
-            required: 'This field is required',
-          })}
-          errorMessage={errors.vehicleRegistration?.message}
-        />
-
         <div className={'flex flex-row gap-2'}>
           <Select
             label={'Vehicle type'}
@@ -154,6 +146,22 @@ export const InsuranceForm: FC<InsuranceFormProps> = ({ insuranceId }) => {
             <option value="motorcycle'">Motorcycle</option>
             <option value="other">other</option>
           </Select>
+          <Select
+            label={'Insurance type'}
+            {...register('type', { required: 'This field is required' })}
+          >
+            <option value="car">Car</option>
+          </Select>
+        </div>
+
+        <div className={'flex flex-row gap-2'}>
+          <Input
+            label={'Vehicle registration number'}
+            {...register('vehicleRegistration', {
+              required: 'This field is required',
+            })}
+            errorMessage={errors.vehicleRegistration?.message}
+          />
 
           <Input
             label={"Vehicle's km"}
