@@ -1,7 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEnum, IsNumber, IsString } from 'class-validator';
 import { Gender } from '../../../types/InsuranceClient';
-import { Education, IncomeType, Married } from '../../../types/FraudPrediction';
+import {
+  Education,
+  IncomeType,
+  Married,
+  VehicleOwnership,
+} from '../../../types/FraudPrediction';
 
 export class CreatePredictionDto {
   @ApiProperty({ required: true })
@@ -25,8 +30,8 @@ export class CreatePredictionDto {
   VEHICLE_OWNERSHIP: number;
 
   @ApiProperty({ required: true })
-  @IsString()
-  VEHICLE_YEAR: string;
+  @IsEnum(VehicleOwnership)
+  VEHICLE_YEAR: VehicleOwnership;
 
   @ApiProperty({ required: true })
   @IsString()

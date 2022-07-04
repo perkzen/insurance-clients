@@ -19,3 +19,8 @@ export enum Married {
   YES = 1,
   NO = 0,
 }
+
+export enum VehicleOwnership {
+  BEFORE_2015 = 'before 2015',
+  AFTER_2015 = 'after 2015',
+}

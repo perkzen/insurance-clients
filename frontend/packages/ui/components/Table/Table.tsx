@@ -165,6 +165,11 @@ export const Table = <T,>({
                                         : 'no status',
                                       'primary'
                                     )}
+                                    disabled={
+                                      statusData &&
+                                      statusData[index] !==
+                                        ClaimStatus.SUBMITTED
+                                    }
                                     onClick={() =>
                                       onPrimaryActionClick(dataItem)
                                     }

@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import { ImUsers } from 'react-icons/im';
-import { FaCarCrash, FaFileContract } from 'react-icons/fa';
+import { FaCarCrash, FaFileContract, FaRobot } from 'react-icons/fa';
 import Link from 'next/link';
 
 const Navigation: FC = () => {
@@ -8,6 +8,7 @@ const Navigation: FC = () => {
     { label: 'Clients', href: '/', icon: <ImUsers /> },
     { label: 'Insurances', href: '/insurances', icon: <FaFileContract /> },
     { label: 'Damage reports', href: '/damage-claims', icon: <FaCarCrash /> },
+    { label: 'Predict fraud', href: '/fraud-predication', icon: <FaRobot /> },
   ];
 
   return (
