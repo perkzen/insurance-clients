@@ -11,7 +11,9 @@ type InsuranceService struct {
 }
 
 func NewInsuranceService() *InsuranceService {
-	return &InsuranceService{}
+	return &InsuranceService{
+		repository: repository.NewInsuranceRepository(),
+	}
 }
 
 func (s *InsuranceService) GetInsurance(id uint) dto.Response {

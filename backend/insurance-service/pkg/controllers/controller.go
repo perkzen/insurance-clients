@@ -13,7 +13,9 @@ type InsuranceController struct {
 }
 
 func NewInsuranceController() *InsuranceController {
-	return &InsuranceController{}
+	return &InsuranceController{
+		service: services.NewInsuranceService(),
+	}
 }
 
 func (con *InsuranceController) GetInsurance(c *gin.Context) {
