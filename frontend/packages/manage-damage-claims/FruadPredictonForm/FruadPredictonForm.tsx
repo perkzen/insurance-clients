@@ -165,7 +165,7 @@ export const FraudPredictionForm = () => {
             })}
           >
             <option value="sedan">Sedan</option>
-            <option value="after 2015">Sport car</option>
+            <option value="sports car">Sports car</option>
           </Select>
         </div>
         <div className={'flex flex-row gap-2'}>
