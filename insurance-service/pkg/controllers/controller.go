@@ -52,6 +52,25 @@ func (i *InsuranceController) GetAll(c *gin.Context) {
 	c.JSON(http.StatusOK, res.Data)
 }
 
+func (i *InsuranceController) GetById(c *gin.Context) {
+	id := c.Param("id")
+
+	uintId, err := strconv.ParseUint(id, 10, 64)
+	if err != nil {
+		c.AbortWithStatusJSON(http.StatusPreconditionFailed, gin.H{"message": "Id must be a number!"})
+		return
+	}
+
+	res := i.service.FindById(uint(uintId))
+
+	if res.Success == false {
+		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"message": res.Message})
+		return
+	}
+
+	c.JSON(http.StatusOK, res.Data)
+}
+
 func (i *InsuranceController) GetByUserId(c *gin.Context) {
 	userId := c.Param("userId")
 
@@ -80,6 +99,39 @@ func (i *InsuranceController) GetByRegistration(c *gin.Context) {
 	}
 
 	res := i.service.FindByRegistration(reg)
+
+	if res.Success == false {
+		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"message": res.Message})
+		return
+	}
+
+	c.JSON(http.StatusOK, res.Data)
+}
+
+func (i *InsuranceController) Update(c *gin.Context) {
+	id := c.Param("id")
+
+	uintId, err := strconv.ParseUint(id, 10, 64)
+	if err != nil {
+		c.AbortWithStatusJSON(http.StatusPreconditionFailed, gin.H{"message": "Id must be a number!"})
+		return
+	}
+
+	var insurance dto.InsuranceDTO
+
+	if err := c.BindJSON(&insurance); err != nil {
+		c.AbortWithStatusJSON(http.StatusPreconditionFailed, gin.H{"message": "Invalid request body"})
+		return
+	}
+
+	newInsurance, err := dto.ConvertToInsurance(&insurance)
+
+	if err != nil {
+		c.AbortWithStatusJSON(http.StatusPreconditionFailed, gin.H{"message": "String to date conversion failed"})
+		return
+	}
+
+	res := i.service.Update(uint(uintId), newInsurance)
 
 	if res.Success == false {
 		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"message": res.Message})

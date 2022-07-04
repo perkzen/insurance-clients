@@ -112,72 +112,80 @@ export const InsuranceClientForm: FC<InsuranceClientFormProps> = ({
     !isEdit && reset();
   };
   return (
-    <form className={'flex flex-col gap-4'} onSubmit={handleSubmit(onSubmit)}>
-      <div className={'flex flex-row gap-2'}>
+    <>
+      <h1
+        className={'text-2xl font-bold mb-5'}
+        style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem' }}
+      >
+        {isEdit ? 'Edit client' : 'Add new client'}
+      </h1>
+      <form className={'flex flex-col gap-4'} onSubmit={handleSubmit(onSubmit)}>
+        <div className={'flex flex-row gap-2'}>
+          <Input
+            label={'Firstname'}
+            {...register('firstname', { required: 'This field is required' })}
+            errorMessage={errors.firstname?.message}
+          />
+          <Input
+            label={'Lastname'}
+            {...register('lastname', { required: 'This field is required' })}
+            errorMessage={errors.lastname?.message}
+          />
+        </div>
         <Input
-          label={'Firstname'}
-          {...register('firstname', { required: 'This field is required' })}
-          errorMessage={errors.firstname?.message}
+          label={'Email'}
+          {...register('email', { required: 'This field is required' })}
+          errorMessage={errors.email?.message}
+        />
+        <Select label={'Gender'} {...register('gender')}>
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+        </Select>
+        <Select
+          label={'Income'}
+          {...register('income', { required: 'This field is required' })}
+        >
+          <option value="minmal">Low</option>
+          <option value="below average">Below Average</option>
+          <option value="average">Average</option>
+          <option value="above average">Above average</option>
+        </Select>
+        <Select
+          label={'Married'}
+          {...register('married', {
+            valueAsNumber: true,
+            min: 0,
+            required: 'This field is required',
+          })}
+        >
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </Select>
+        <Input
+          label={'Birthday'}
+          type={'date'}
+          {...register('birthday', { required: 'This field is required' })}
+          errorMessage={errors.birthday?.message}
         />
         <Input
-          label={'Lastname'}
-          {...register('lastname', { required: 'This field is required' })}
-          errorMessage={errors.lastname?.message}
+          label={'Children'}
+          type={'number'}
+          {...register('children', {
+            valueAsNumber: true,
+            min: 0,
+            required: 'This field is required',
+          })}
+          errorMessage={errors.children?.message}
         />
-      </div>
-      <Input
-        label={'Email'}
-        {...register('email', { required: 'This field is required' })}
-        errorMessage={errors.email?.message}
-      />
-      <Select label={'Gender'} {...register('gender')}>
-        <option value="female">Female</option>
-        <option value="male">Male</option>
-      </Select>
-      <Select
-        label={'Income'}
-        {...register('income', { required: 'This field is required' })}
-      >
-        <option value="minmal">Low</option>
-        <option value="below average">Below Average</option>
-        <option value="average">Average</option>
-        <option value="above average">Above average</option>
-      </Select>
-      <Select
-        label={'Married'}
-        {...register('married', {
-          valueAsNumber: true,
-          min: 0,
-          required: 'This field is required',
-        })}
-      >
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-      </Select>
-      <Input
-        label={'Birthday'}
-        type={'date'}
-        {...register('birthday', { required: 'This field is required' })}
-        errorMessage={errors.birthday?.message}
-      />
-      <Input
-        label={'Children'}
-        type={'number'}
-        {...register('children', {
-          valueAsNumber: true,
-          min: 0,
-          required: 'This field is required',
-        })}
-        errorMessage={errors.children?.message}
-      />
-      <div className={'flex flex-row gap-2'}>
-        <Button>Save</Button>
-        {isEdit && (
-          <Button type={'button'} onClick={handleDelete}>
-            Delete
-          </Button>
-        )}
-      </div>
-    </form>
+        <div className={'flex flex-row gap-2'}>
+          <Button>Save</Button>
+          {isEdit && (
+            <Button type={'button'} onClick={handleDelete}>
+              Delete
+            </Button>
+          )}
+        </div>
+      </form>
+    </>
   );
 };

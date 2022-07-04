@@ -8,6 +8,14 @@ export class CreateInsuranceDto {
   userId: number;
 
   @ApiProperty({ required: true })
+  @IsString()
+  firstname: string;
+
+  @ApiProperty({ required: true })
+  @IsString()
+  lastname: string;
+
+  @ApiProperty({ required: true })
   @IsEnum(InsuranceType)
   type: InsuranceType;
 

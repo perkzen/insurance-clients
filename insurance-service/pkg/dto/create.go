@@ -30,6 +30,8 @@ func ConvertToInsurance(dto *InsuranceDTO) (*models.Insurance, error) {
 
 	return &models.Insurance{
 		UserId:              dto.UserId,
+		Firstname:           dto.Firstname,
+		Lastname:            dto.Lastname,
 		Type:                dto.Type,
 		From:                from,
 		To:                  to,

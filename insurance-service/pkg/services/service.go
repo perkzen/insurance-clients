@@ -48,6 +48,23 @@ func (i *InsuranceService) FindAll() dto.Response {
 	}
 }
 
+func (i *InsuranceService) FindById(id uint) dto.Response {
+	res := i.repository.FindById(id)
+
+	if res.Error != nil {
+		return dto.Response{
+			Success: false,
+			Message: res.Error.Error(),
+		}
+	}
+
+	return dto.Response{
+		Success: true,
+		Message: "Insurance was found.",
+		Data:    res.Data,
+	}
+}
+
 func (i *InsuranceService) FindByUser(userId uint) dto.Response {
 	res := i.repository.FindByUser(userId)
 
@@ -80,5 +97,21 @@ func (i *InsuranceService) FindByRegistration(reg string) dto.Response {
 		Message: "Insurance was found.",
 		Data:    res.Data,
 	}
+}
 
+func (i *InsuranceService) Update(id uint, data *models.Insurance) dto.Response {
+	res := i.repository.Update(id, data)
+
+	if res.Error != nil {
+		return dto.Response{
+			Success: false,
+			Message: res.Error.Error(),
+		}
+	}
+
+	return dto.Response{
+		Success: true,
+		Message: "Insurance was updated.",
+		Data:    res.Data,
+	}
 }

@@ -35,6 +35,18 @@ func (i *InsuranceRep) FindAll() Result {
 
 }
 
+func (i *InsuranceRep) FindById(id uint) Result {
+	var insurance models.Insurance
+
+	err := db.Client.Where(&models.Insurance{ID: id}).Take(&insurance).Error
+
+	if err != nil {
+		return Result{Error: err}
+	}
+
+	return Result{Data: &insurance}
+}
+
 func (i *InsuranceRep) FindByUser(userId uint) Result {
 	var insurance []models.Insurance
 
@@ -54,6 +66,22 @@ func (i *InsuranceRep) FindByRegistration(reg string) Result {
 	if err != nil {
 		return Result{Error: err}
 	}
+
+	return Result{Data: &insurance}
+}
+
+func (i *InsuranceRep) Update(id uint, data *models.Insurance) Result {
+	var insurance models.Insurance
+	err := db.Client.Where(&models.Insurance{ID: id}).Take(&insurance).Error
+
+	if err != nil {
+		return Result{Error: err}
+	}
+
+	insurance = *data
+	insurance.ID = id
+
+	db.Client.Save(&insurance)
 
 	return Result{Data: &insurance}
 }
