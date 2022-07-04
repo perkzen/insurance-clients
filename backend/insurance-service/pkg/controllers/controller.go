@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
+	"insurance-service/pkg/dto"
 	"insurance-service/pkg/models"
 	"insurance-service/pkg/services"
 	"net/http"
@@ -49,14 +50,20 @@ func (con *InsuranceController) GetAllInsurance(c *gin.Context) {
 }
 
 func (con *InsuranceController) CreateInsurance(c *gin.Context) {
-	var insurance *models.Insurance
+	var insurance *dto.InsuranceDTO
 
 	if err := c.BindJSON(&insurance); err != nil {
 		c.AbortWithStatusJSON(http.StatusPreconditionFailed, gin.H{"message": "Invalid request body"})
 		return
 	}
 
-	res := con.service.CreateInsurance(insurance)
+	newInsurance, err := dto.ConvertToInsurance(insurance)
+	if err != nil {
+		c.AbortWithStatusJSON(http.StatusPreconditionFailed, gin.H{"message": "String to date conversion failed"})
+		return
+	}
+
+	res := con.service.CreateInsurance(newInsurance)
 
 	if res.Success == false {
 		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"message": res.Message})

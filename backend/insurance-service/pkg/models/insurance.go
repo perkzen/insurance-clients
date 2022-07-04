@@ -4,7 +4,6 @@ import "time"
 
 type Insurance struct {
 	ID                  uint       `gorm:"primary_key" json:"id"`
-	UserID              uint       `json:"userId"`
 	Firstname           string     `json:"firstname"`
 	Lastname            string     `json:"lastname"`
 	Type                string     `json:"type"`
