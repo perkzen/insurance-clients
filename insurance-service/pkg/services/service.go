@@ -31,6 +31,23 @@ func (i *InsuranceService) Save(insurance *models.Insurance) dto.Response {
 	}
 }
 
+func (i *InsuranceService) FindAll() dto.Response {
+	res := i.repository.FindAll()
+
+	if res.Error != nil {
+		return dto.Response{
+			Success: false,
+			Message: res.Error.Error(),
+		}
+	}
+
+	return dto.Response{
+		Success: true,
+		Message: "Insurance was found.",
+		Data:    res.Data,
+	}
+}
+
 func (i *InsuranceService) FindByUser(userId uint) dto.Response {
 	res := i.repository.FindByUser(userId)
 

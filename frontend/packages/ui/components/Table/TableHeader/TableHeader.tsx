@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import classes from '../Table.module.scss';
 import { Button } from '../../Button/Button';
 

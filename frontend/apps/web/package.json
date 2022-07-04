@@ -18,7 +18,8 @@
     "react-query": "^3.39.1",
     "sass": "^1.53.0",
     "ui": "*",
-    "shared-types": "*"
+    "shared-types": "*",
+    "manage-insurances": "*"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",

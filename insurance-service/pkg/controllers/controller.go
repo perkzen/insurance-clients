@@ -41,6 +41,17 @@ func (i *InsuranceController) Save(c *gin.Context) {
 	c.JSON(http.StatusOK, res.Data)
 }
 
+func (i *InsuranceController) GetAll(c *gin.Context) {
+	res := i.service.FindAll()
+
+	if res.Success == false {
+		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"message": res.Message})
+		return
+	}
+
+	c.JSON(http.StatusOK, res.Data)
+}
+
 func (i *InsuranceController) GetByUserId(c *gin.Context) {
 	userId := c.Param("userId")
 

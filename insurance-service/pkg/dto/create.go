@@ -8,12 +8,14 @@ import (
 
 type InsuranceDTO struct {
 	UserId              uint                `json:"userId"`
+	Firstname           string              `json:"firstname"`
+	Lastname            string              `json:"lastname"`
 	Type                types.InsuranceType `json:"type"`
 	From                string              `json:"from"`
 	To                  string              `json:"to"`
 	VehicleRegistration string              `json:"vehicleRegistration"`
 	VehicleType         types.VehicleType   `json:"vehicleType"`
-	VehicleKm           int                 `json:"km"`
+	VehicleKm           int                 `json:"vehicleKm"`
 	SpeedingTickets     int                 `json:"speedingTickets"`
 	DrunkDrivingTickets int                 `json:"drunkDrivingTickets"`
 }

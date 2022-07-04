@@ -22,6 +22,19 @@ func (i *InsuranceRep) Save(insurance *models.Insurance) Result {
 	return Result{Data: insurance}
 }
 
+func (i *InsuranceRep) FindAll() Result {
+	var insurance []models.Insurance
+
+	res := db.Client.Find(&insurance)
+
+	if res.Error != nil {
+		return Result{Error: res.Error}
+	}
+
+	return Result{Data: &insurance}
+
+}
+
 func (i *InsuranceRep) FindByUser(userId uint) Result {
 	var insurance []models.Insurance
 

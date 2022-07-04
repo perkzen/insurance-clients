@@ -1,6 +1,8 @@
 export interface Insurance {
   id: number;
   userId: number;
+  firstname: string;
+  lastname: string;
   type: InsuranceType;
   from: string;
   to: string;

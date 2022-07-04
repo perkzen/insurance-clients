@@ -12,6 +12,7 @@ func setInsuranceRouter(router *gin.Engine) {
 	insuranceGroup := router.Group(PREFIX + "/insurance")
 	controller := controllers.NewInsuranceController()
 	insuranceGroup.POST("/", controller.Save)
+	insuranceGroup.GET("/", controller.GetAll)
 	insuranceGroup.GET("/:userId", controller.GetByUserId)
 	insuranceGroup.GET("/vehicle/:reg", controller.GetByRegistration)
 }

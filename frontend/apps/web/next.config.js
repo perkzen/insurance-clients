@@ -1,9 +1,10 @@
 const withTM = require('next-transpile-modules')([
-  'ui',
-  'react-query',
-  'manage-clients',
+    'ui',
+    'react-query',
+    'manage-clients',
+    "manage-insurances"
 ]);
 
 module.exports = withTM({
-  reactStrictMode: true,
+    reactStrictMode: true,
 });

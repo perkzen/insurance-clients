@@ -27,6 +27,7 @@ interface TableProps<T> {
   statusInactiveText?: string;
   statusPositiveText?: string;
   statusNegativeText?: string;
+  searchComponent?: ReactNode;
 }
 
 export const Table = <T,>({
@@ -47,10 +48,12 @@ export const Table = <T,>({
   statusInactiveText,
   statusPositiveText,
   statusNegativeText,
+  searchComponent,
 }: TableProps<T>) => {
   return (
     <div className={classes.Container}>
       {tableHeaderComponent}
+      {searchComponent}
       <div className="mt-8 flex flex-col">
         <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">

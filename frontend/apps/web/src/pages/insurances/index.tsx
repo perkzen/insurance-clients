@@ -1,7 +1,8 @@
 import React from 'react';
+import { InsuranceTable } from 'manage-insurances';
 
 const Insurances = () => {
-  return <div>insurances</div>;
+  return <InsuranceTable />;
 };
 
 export default Insurances;

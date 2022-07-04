@@ -5,7 +5,7 @@ import { classNames } from '../../classNames';
 export interface InputProps extends HTMLProps<HTMLInputElement> {
   errorMessage?: string;
   className?: string;
-  label: string;
+  label?: string;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
