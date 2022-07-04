@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import { Sidebar } from '../Sidebar/Sidebar';
+import { Button } from 'ui';
 
 interface LayoutProps {
   children: ReactNode;
@@ -9,7 +10,16 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <div className={'flex flex-row h-screen'}>
       <Sidebar />
-      <main className={'py-10 px-20 w-full'}>{children}</main>
+      <div className={'w-full'}>
+        <div
+          className={'flex flex-row justify-end w-full h-12 py-8 pr-5 shadow'}
+        >
+          <div className={'self-center'}>
+            <Button>Login</Button>
+          </div>
+        </div>
+        <main className={'py-10 px-20 w-full'}>{children}</main>
+      </div>
     </div>
   );
 };

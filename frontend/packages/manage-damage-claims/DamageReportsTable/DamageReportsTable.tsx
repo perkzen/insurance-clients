@@ -5,11 +5,12 @@ import { BE_DAMAGE_CLAIMS_URL } from '../axios';
 import { DamageClaim } from 'shared-types';
 import { EmptyTable, Table } from 'ui';
 import { ITableHeader } from 'ui/components/Table/Table';
+import { format } from 'date-fns';
 
 const headers: ITableHeader<DamageClaim>[] = [
   { label: 'Email', accessor: 'email' },
   { label: 'Comment', accessor: 'comment' },
-  { label: 'Submitted at', accessor: 'submittedAt' },
+  { label: 'Date', accessor: 'date' },
 ];
 
 interface ReportTableProps {
@@ -27,9 +28,15 @@ export const DamageReportsTable: FC<ReportTableProps> = ({
 
   const statusData = data?.map((item) => item.status);
 
+  const formattedData = data?.map((item) => {
+    return {
+      ...item,
+      date: format(new Date(item.date), 'dd/MM/yyyy'),
+    };
+  });
   return (
     <Table
-      data={data ? data : []}
+      data={formattedData ? formattedData : []}
       isLoading={isLoading}
       headers={headers}
       showStatus
