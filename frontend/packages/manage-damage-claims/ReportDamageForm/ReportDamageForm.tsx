@@ -2,9 +2,7 @@ import React, { FC } from 'react';
 import { Button, Input, Select } from 'ui';
 import { useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
-import { DamageClaim } from 'shared-types';
 import instance, { BE_DAMAGE_CLAIMS_URL } from '../axios';
-import { useAuth } from 'web/src/context/AuthContext';
 import { toast } from 'react-hot-toast';
 
 interface ReportFormData {
@@ -26,7 +24,11 @@ interface Report {
   email: string;
 }
 
-export const ReportDamageForm: FC = () => {
+interface ReportDamageFormProps {
+  email: string;
+}
+
+export const ReportDamageForm: FC<ReportDamageFormProps> = ({ email }) => {
   const { register, handleSubmit, reset } = useForm<ReportFormData>({
     defaultValues,
   });
@@ -35,14 +37,12 @@ export const ReportDamageForm: FC = () => {
     instance.post(`${BE_DAMAGE_CLAIMS_URL}/submit`, newReport)
   );
 
-  const { user } = useAuth();
-
   const onSubmit = async (data: ReportFormData) => {
-    if (!user?.email) {
+    if (!email) {
       toast.error('You must be logged in to submit a report');
       return;
     }
-    const newReport: Report = { ...data, email: user.email };
+    const newReport: Report = { ...data, email: email };
     await toast.promise(mutateAsync(newReport), {
       loading: 'Submitting...',
       success: 'Submitted successfully',
