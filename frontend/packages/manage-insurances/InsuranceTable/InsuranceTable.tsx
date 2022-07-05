@@ -3,7 +3,7 @@ import { EmptyTable, Input, Table, TableHeader } from 'ui';
 import { ITableHeader } from 'ui/components/Table/Table';
 import { Insurance } from 'shared-types';
 import { useQuery } from 'react-query';
-import { BE_URL } from '../axios';
+import instance from '../axios';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 
@@ -26,7 +26,7 @@ export const InsuranceTable: FC<ClientsTableProps> = ({
   header,
 }) => {
   const { data, isLoading } = useQuery('insurances', () =>
-    axios.get(BE_URL).then((res) => res.data as Insurance[])
+    instance.get('/').then((res) => res.data as Insurance[])
   );
 
   const { register, watch } = useForm<{
@@ -50,9 +50,9 @@ export const InsuranceTable: FC<ClientsTableProps> = ({
     () => {
       const firstname = search.client.split(' ')[0];
       const lastname = search.client.split(' ')[1];
-      return axios
+      return instance
         .get(
-          `${BE_URL}/filter?firstname=${firstname}&lastname=${lastname}&reg=${search.reg}`
+          `/filter?firstname=${firstname}&lastname=${lastname}&reg=${search.reg}`
         )
         .then((res) => res.data as Insurance[]);
     },

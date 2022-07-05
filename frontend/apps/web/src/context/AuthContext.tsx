@@ -36,13 +36,22 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       const authUser = currentUser as User;
-      console.log(authUser);
       setUser(authUser);
     });
     return () => {
       unsubscribe();
     };
   }, []);
+
+  useEffect(() => {
+    const saveAccessToken = async () => {
+      if (user) {
+        const accessToken = await user.getIdToken();
+        localStorage.setItem('accessToken', accessToken);
+      }
+    };
+    saveAccessToken();
+  }, [user]);
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>

@@ -4,7 +4,7 @@ import { Button, Input, Select } from 'ui';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { useRouter } from 'next/router';
 import axios, { AxiosResponse } from 'axios';
-import { BE_URL } from '../axios';
+import instance from '../axios';
 import { format } from 'date-fns';
 import { toast } from 'react-hot-toast';
 
@@ -47,19 +47,19 @@ export const InsuranceForm: FC<InsuranceFormProps> = ({ insuranceId }) => {
   const { data: res, isLoading } = useQuery(
     'insurance',
     () =>
-      axios
-        .get(`${BE_URL}/${insuranceId}`)
+      instance
+        .get(`/${insuranceId}`)
         .then((res) => res as AxiosResponse<InsuranceFormData>),
     { enabled: isEdit }
   );
 
   const addInsurance = useMutation((newInsurance: InsuranceFormData) =>
-    axios.post(BE_URL, newInsurance)
+    instance.post('/', newInsurance)
   );
 
   const updateInsurance = useMutation(
     (newInsurance: InsuranceFormData) => {
-      return axios.put(`${BE_URL}/${insuranceId}`, newInsurance);
+      return instance.put(`/${insuranceId}`, newInsurance);
     },
     {
       onSuccess: () => queryClient.invalidateQueries('client'),

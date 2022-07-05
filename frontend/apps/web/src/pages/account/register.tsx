@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Input } from 'ui';
 import Link from 'next/link';
-import { useAuth } from '../../context/AuthContext';
 import { useForm } from 'react-hook-form';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../firebase/config';

@@ -1,10 +1,21 @@
-import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Put,
+  Query,
+  UseGuards,
+} from '@nestjs/common';
 import { InsurancesService } from './insurances.service';
 import { ApiQuery, ApiTags } from '@nestjs/swagger';
 import { Insurance } from '../../types/Insurance';
 import { CreateInsuranceDto } from './dto/create-insurance.dto';
+import { AuthGuard } from '../../guards/auth.guard';
 
 @ApiTags('Insurances')
+@UseGuards(AuthGuard)
 @Controller('insurances')
 export class InsurancesController {
   constructor(private readonly insurancesService: InsurancesService) {}

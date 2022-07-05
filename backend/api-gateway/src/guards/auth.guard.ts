@@ -6,8 +6,8 @@ import {
   Injectable,
 } from '@nestjs/common';
 import * as firebase from 'firebase-admin';
-import { account } from 'firebase/config';
 import { Errors } from '../constants/errors';
+import firebaseServiceAccount from '../../firebase/account';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
   constructor() {
     if (!firebase.apps.length) {
       this.app = firebase.initializeApp({
-        credential: firebase.credential.cert(JSON.stringify(account)),
+        credential: firebase.credential.cert(firebaseServiceAccount),
       });
     } else {
       this.app = firebase.app();
