@@ -1,10 +1,11 @@
 import React from 'react';
-import { ReportDamageForm } from 'manage-damage-claims';
 import ProtectedRoute from '../../components/ProtectedRoute/ProtectedRoute';
+import { ReportDamageForm } from 'manage-damage-claims';
 import { useAuth } from '../../context/AuthContext';
 
-const ReportDamage = () => {
+const ReportForm = () => {
   const { user } = useAuth();
+
   return (
     <ProtectedRoute>
       <div className={'flex flex-col justify-center items-center'}>
@@ -14,4 +15,4 @@ const ReportDamage = () => {
   );
 };
 
-export default ReportDamage;
+export default ReportForm;

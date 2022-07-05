@@ -55,7 +55,7 @@ const Login = () => {
   };
 
   return (
-    <div className={'flex flex-col justify-center items-center w-full mt-20'}>
+    <div className={'flex flex-col justify-center items-center w-full'}>
       <h1 className={'text-2xl font-bold'}>Login</h1>
       <p className={'font-semibold text-red-600 mt-4'}>{error}</p>
       <form className={'flex flex-col w-1/3'} onSubmit={handleSubmit(onSubmit)}>

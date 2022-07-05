@@ -10,6 +10,8 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { User } from '@firebase/auth-types';
 import { auth } from '../../firebase/config';
 
+export const ADMIN_EMAIL = 'admin@admin.com';
+
 interface IAuthContext {
   user: User | null;
   setUser: (user: User) => void;
