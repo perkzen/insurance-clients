@@ -226,7 +226,7 @@ export const FraudPredictionForm = () => {
         <Button>Make Prediction</Button>
       </form>
       <div style={{ fontWeight: 700, marginTop: '1rem' }}>
-        Prediction: {probability.toFixed(0)}%
+        Fraud probability: {probability.toFixed(0)}%
       </div>
     </>
   );
