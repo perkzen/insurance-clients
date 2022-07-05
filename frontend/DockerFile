@@ -1,0 +1,20 @@
+FROM node:17-alpine
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+ENV NEXT_PUBLIC_API_KEY=AIzaSyD6E4SgkpRM9XigVZCM1daqE9IbEPt7moE
+ENV NEXT_PUBLIC_DOMAIN=insurance-api-gateway.firebaseapp.com
+ENV NEXT_PUBLIC_PROJECT_ID=insurance-api-gateway
+ENV NEXT_PUBLIC_BUCKET=insurance-api-gateway.appspot.com
+ENV NEXT_PUBLIC_MESSAGING_ID=458361571467
+ENV NEXT_PUBLIC_APP_ID=1:458361571467:web:bffd54060379bdad966c8e
+
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]
