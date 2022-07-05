@@ -1,4 +1,4 @@
-import { IsEmail, IsNumber, IsString } from 'class-validator';
+import { IsEmail, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateClaimDto {
@@ -11,8 +11,8 @@ export class CreateClaimDto {
   comment: string;
 
   @ApiProperty({ required: true })
-  @IsNumber()
-  insuranceId: number;
+  @IsString()
+  insuranceType: string;
 
   @ApiProperty({ required: true })
   @IsString()

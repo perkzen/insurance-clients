@@ -6,15 +6,11 @@ import {
   useEffect,
   useState,
 } from 'react';
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged,
-} from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 import { User } from '@firebase/auth-types';
 import { auth } from '../../firebase/config';
-import firebase from 'firebase/compat';
+
+export const ADMIN_EMAIL = 'admin@admin.com';
 
 interface IAuthContext {
   user: User | null;

@@ -42,8 +42,8 @@ export interface DamageClaim {
   id: number;
   email: string;
   comment: string;
-  insuranceId: number;
+  insuranceType: string;
   date: string;
-  submittedAt: string;
+  submittedAt?: string;
   status: ClaimStatus;
 }

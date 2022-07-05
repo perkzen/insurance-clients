@@ -72,7 +72,7 @@ export const FraudPredictionForm = () => {
         className={'text-2xl font-bold mb-5'}
         style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem' }}
       >
-        Make Prediction
+        Detect insurance fraud
       </h1>
       <form
         className={'flex flex-col gap-4 w-2/3'}

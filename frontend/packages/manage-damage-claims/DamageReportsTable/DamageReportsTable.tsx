@@ -9,6 +9,7 @@ import { toast } from 'react-hot-toast';
 
 const headers: ITableHeader<DamageClaim>[] = [
   { label: 'Email', accessor: 'email' },
+  { label: 'Insurance', accessor: 'insuranceType' },
   { label: 'Comment', accessor: 'comment' },
   { label: 'Date', accessor: 'date' },
 ];
@@ -18,10 +19,7 @@ interface ReportTableProps {
   onRowClick?: (client: DamageClaim) => void;
 }
 
-export const DamageReportsTable: FC<ReportTableProps> = ({
-  header,
-  onRowClick,
-}) => {
+export const DamageReportsTable: FC<ReportTableProps> = ({ header }) => {
   const queryClient = useQueryClient();
   const { data, isLoading } = useQuery('damage-reports', () =>
     instance.get(BE_DAMAGE_CLAIMS_URL).then((res) => res.data as DamageClaim[])
@@ -55,7 +53,6 @@ export const DamageReportsTable: FC<ReportTableProps> = ({
       headers={headers}
       showStatus
       statusData={statusData}
-      onRowClick={(item: DamageClaim) => (onRowClick ? onRowClick(item) : null)}
       emptyTableComponent={<EmptyTable title={'No data'} />}
       tableHeaderComponent={header}
       primaryActionText={'Approve'}
@@ -83,12 +80,3 @@ export const DamageReportsTable: FC<ReportTableProps> = ({
     />
   );
 };
-
-// await toast.promise(
-//       isEdit ? updateClient.mutateAsync(data) : addClient.mutateAsync(data),
-//       {
-//         loading: 'Saving...',
-//         success: 'Save!',
-//         error: 'Error saving!',
-//       }
-//     );

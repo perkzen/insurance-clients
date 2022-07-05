@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { Button, Input } from 'ui';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
-import { useAuth } from '../../context/AuthContext';
+import { ADMIN_EMAIL, useAuth } from '../../context/AuthContext';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../firebase/config';
 import { User } from '@firebase/auth-types';
@@ -43,7 +43,11 @@ const Login = () => {
         data.email,
         data.password
       );
-      await router.push('/');
+      if (res.user.email === ADMIN_EMAIL) {
+        await router.push('/');
+      } else {
+        await router.push('/report-damage');
+      }
     } catch (error) {
       setError('Invalid email or password');
     } finally {

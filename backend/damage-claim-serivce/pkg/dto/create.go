@@ -6,10 +6,10 @@ import (
 )
 
 type ClaimDTO struct {
-	Email       string `gorm:"not null" json:"userId"`
-	Comment     string `json:"comment"`
-	InsuranceId uint   `json:"insuranceId"`
-	Date        string `json:"date"`
+	Email         string `gorm:"not null" json:"email"`
+	Comment       string `json:"comment"`
+	InsuranceType string `json:"insuranceType"`
+	Date          string `json:"date"`
 }
 
 func ConvertToClaim(dto *ClaimDTO) (*models.Claim, error) {
@@ -20,9 +20,9 @@ func ConvertToClaim(dto *ClaimDTO) (*models.Claim, error) {
 	}
 
 	return &models.Claim{
-		Email:       dto.Email,
-		Comment:     dto.Comment,
-		InsuranceId: dto.InsuranceId,
-		Date:        date,
+		Email:         dto.Email,
+		Comment:       dto.Comment,
+		InsuranceType: dto.InsuranceType,
+		Date:          date,
 	}, nil
 }
