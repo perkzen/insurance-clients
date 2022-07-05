@@ -27,7 +27,7 @@ const defaultValues: ClientFromData = {
   gender: 'male',
   children: 0,
   married: 0,
-  income: 'average',
+  income: 'minmal',
 };
 
 interface InsuranceClientFormProps {
