@@ -2,8 +2,8 @@ import React, { FC, useEffect } from 'react';
 import { Button, Input, Select } from 'ui';
 import { useForm } from 'react-hook-form';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
-import { BE_URL } from '../axios';
-import axios, { AxiosResponse } from 'axios';
+import instance from '../axios';
+import { AxiosResponse } from 'axios';
 import { toast } from 'react-hot-toast';
 import { format } from 'date-fns';
 import { useRouter } from 'next/router';
@@ -44,28 +44,27 @@ export const InsuranceClientForm: FC<InsuranceClientFormProps> = ({
   const { data: res, isLoading } = useQuery(
     'client',
     () =>
-      axios
-        .get(`${BE_URL}/${clientId}`)
+      instance
+        .get(`/${clientId}`)
         .then((res) => res as AxiosResponse<ClientFromData>),
     { enabled: isEdit }
   );
   const addClient = useMutation((newClient: ClientFromData) => {
-    return axios.post(BE_URL, newClient);
+    return instance.post('/', newClient);
   });
 
   const updateClient = useMutation(
     (newClient: ClientFromData) => {
-      return axios.put(`${BE_URL}/${clientId}`, newClient);
+      return instance.put(`/${clientId}`, newClient);
     },
     {
       onSuccess: () => queryClient.invalidateQueries('client'),
     }
   );
 
-  const deleteClient = useMutation(
-    () => axios.delete(`${BE_URL}/${clientId}`),
-    { onSuccess: () => router.push('/') }
-  );
+  const deleteClient = useMutation(() => instance.delete(`/${clientId}`), {
+    onSuccess: () => router.push('/'),
+  });
 
   const handleDelete = async () => {
     await toast.promise(deleteClient.mutateAsync(), {

@@ -1,7 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
-import axios from 'axios';
-import { BE_DAMAGE_CLAIMS_URL } from '../axios';
+import instance, { BE_DAMAGE_CLAIMS_URL } from '../axios';
 import { ClaimStatus, DamageClaim } from 'shared-types';
 import { EmptyTable, Table } from 'ui';
 import { ITableHeader } from 'ui/components/Table/Table';
@@ -25,7 +24,7 @@ export const DamageReportsTable: FC<ReportTableProps> = ({
 }) => {
   const queryClient = useQueryClient();
   const { data, isLoading } = useQuery('damage-reports', () =>
-    axios.get(BE_DAMAGE_CLAIMS_URL).then((res) => res.data as DamageClaim[])
+    instance.get(BE_DAMAGE_CLAIMS_URL).then((res) => res.data as DamageClaim[])
   );
 
   const statusData = data?.map((item) => item.status);
@@ -39,7 +38,7 @@ export const DamageReportsTable: FC<ReportTableProps> = ({
 
   const { mutateAsync } = useMutation(
     ({ id, status }: { id: number; status: ClaimStatus }) =>
-      axios.put(`${BE_DAMAGE_CLAIMS_URL}/review/${id}`, {
+      instance.put(`${BE_DAMAGE_CLAIMS_URL}/review/${id}`, {
         status: status,
       }),
     {

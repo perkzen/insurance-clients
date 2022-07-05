@@ -4,8 +4,7 @@ import { InsuranceClient } from 'shared-types';
 import { ITableHeader } from 'ui/components/Table/Table';
 import { EmptyTable } from 'ui';
 import { useQuery } from 'react-query';
-import axios from 'axios';
-import { BE_URL } from '../axios';
+import instance from '../axios';
 
 const headers: ITableHeader<InsuranceClient>[] = [
   { label: 'Firstname', accessor: 'firstname' },
@@ -20,7 +19,7 @@ interface ClientsTableProps {
 
 export const ClientsTable: FC<ClientsTableProps> = ({ header, onRowClick }) => {
   const { data, isLoading } = useQuery('clients', () =>
-    axios.get(BE_URL).then((res) => res.data as InsuranceClient[])
+    instance.get('/').then((res) => res.data as InsuranceClient[])
   );
 
   return (

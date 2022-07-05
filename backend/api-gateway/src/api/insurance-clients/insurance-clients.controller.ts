@@ -6,14 +6,17 @@ import {
   Put,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { InsuranceClientsService } from './insurance-clients.service';
 import { CreateInsuranceClientDto } from './dto/create-insurance-client.dto';
 import { UpdateInsuranceClientDto } from './dto/update-insurance-client.dto';
 import { InsuranceClient } from '../../types/InsuranceClient';
 import { ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '../../guards/auth.guard';
 
 @ApiTags('Insurance clients')
+@UseGuards(AuthGuard)
 @Controller('insurance-clients')
 export class InsuranceClientsController {
   constructor(

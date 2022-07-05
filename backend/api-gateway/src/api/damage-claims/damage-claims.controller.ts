@@ -1,11 +1,21 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Put,
+  UseGuards,
+} from '@nestjs/common';
 import { DamageClaimsService } from './damage-claims.service';
 import { ApiTags } from '@nestjs/swagger';
 import { CreateClaimDto } from './dto/create-claim.dto';
 import { DamageClaim } from '../../types/DamageClaim';
 import { UpdateClaimDto } from './dto/update-claim.dto';
+import { AuthGuard } from '../../guards/auth.guard';
 
 @ApiTags('Damage claims')
+@UseGuards(AuthGuard)
 @Controller('damage-claims')
 export class DamageClaimsController {
   constructor(private readonly damageClaimsService: DamageClaimsService) {}

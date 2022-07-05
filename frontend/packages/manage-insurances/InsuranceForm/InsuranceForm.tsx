@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Button, Input, Select } from 'ui';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { useRouter } from 'next/router';
-import axios, { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
 import instance from '../axios';
 import { format } from 'date-fns';
 import { toast } from 'react-hot-toast';
@@ -42,7 +42,6 @@ interface InsuranceFormProps {
 export const InsuranceForm: FC<InsuranceFormProps> = ({ insuranceId }) => {
   const isEdit: boolean = !isNaN(insuranceId!);
   const queryClient = useQueryClient();
-  const router = useRouter();
 
   const { data: res, isLoading } = useQuery(
     'insurance',

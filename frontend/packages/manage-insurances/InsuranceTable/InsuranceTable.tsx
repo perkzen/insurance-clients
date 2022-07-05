@@ -1,10 +1,9 @@
-import React, { FC, ReactNode, useEffect, useState } from 'react';
-import { EmptyTable, Input, Table, TableHeader } from 'ui';
+import React, { FC, ReactNode, useEffect } from 'react';
+import { EmptyTable, Input, Table } from 'ui';
 import { ITableHeader } from 'ui/components/Table/Table';
 import { Insurance } from 'shared-types';
 import { useQuery } from 'react-query';
 import instance from '../axios';
-import axios from 'axios';
 import { useForm } from 'react-hook-form';
 
 const headers: ITableHeader<Insurance>[] = [

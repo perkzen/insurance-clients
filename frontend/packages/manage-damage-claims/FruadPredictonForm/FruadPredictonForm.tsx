@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Input, Select } from 'ui';
 import { useMutation } from 'react-query';
-import axios, { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
 import { FraudPrediction } from 'shared-types';
-import { BE_FRAUD_DETECTION_URL } from '../axios';
+import instance, { BE_FRAUD_DETECTION_URL } from '../axios';
 import { toast } from 'react-hot-toast';
 
 interface PredictionFormData {
@@ -49,7 +49,7 @@ export const FraudPredictionForm = () => {
   });
 
   const { mutateAsync } = useMutation(
-    (data: PredictionFormData) => axios.post(BE_FRAUD_DETECTION_URL, data),
+    (data: PredictionFormData) => instance.post(BE_FRAUD_DETECTION_URL, data),
     {
       onSuccess: (data) => {
         const { data: response } = data as AxiosResponse<FraudPrediction>;
