@@ -6,7 +6,14 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      transformOrigin: {
+        0: '0%',
+      },
+      zIndex: {
+        '-1': '-1',
+      },
+    },
   },
   plugins: [],
 };
