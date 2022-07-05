@@ -1,0 +1,74 @@
+version: '3'
+
+services:
+  api-gateway:
+      build: ./backend/api-gateway
+      restart: always
+      ports:
+        - "8000:8000"
+  insurance-clients-db:
+      image: postgres:13
+      ports:
+        - "2000:5432"
+      environment:
+        POSTGRES_USER: admin
+        POSTGRES_PASSWORD: admin
+        POSTGRES_DB: insuranceClientsDB
+      volumes:
+        - volInsuranceClientsDB:/var/lib/postgresql/data
+      restart: always
+  insurance-clients-service:
+      build: ./backend/insurance-clients
+      restart: always
+      ports:
+        - "8080:8080"
+  insurances-service-db:
+      image: postgres:13
+      ports:
+        - "4000:5432"
+      environment:
+        POSTGRES_USER: admin
+        POSTGRES_PASSWORD: admin
+        POSTGRES_DB: insuranceDB
+      volumes:
+        - volInsuranceDB:/var/lib/postgresql/data
+      restart: always
+  insurance-service:
+      build: ./backend/insurance-service
+      restart: always
+      ports:
+        - "8082:8802"
+  damage-claims-db:
+      image: postgres:13
+      ports:
+        - "1000:5432"
+      environment:
+        POSTGRES_USER: admin
+        POSTGRES_PASSWORD: admin
+        POSTGRES_DB: damageClaimsDB
+      volumes:
+        - volCompensationManagerDB:/var/lib/postgresql/data
+      restart: always
+  damage-claims-service:
+      build: ./backend/damage-claim-service
+      restart: always
+      ports:
+        - "8081:8801"
+  fraud-prediction-service:
+      build: ./backend/fraud-detection-service
+      ports:
+        - "5001:5000"
+      environment:
+        - PROJECT=perko.domen/fraud-detection
+        - API_TOKEN=eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiJjYjFiOWYwYi0xMzkyLTQ3Y2ItYmRhZi1mM2MxMjlmNGVjZmYifQ==
+        - MODEL=FRAUD-MLP
+        - STAGE=production
+
+
+
+
+
+volumes:
+  volInsuranceClientsDB:
+  volInsuranceDB:
+  volCompensationManagerDB:
