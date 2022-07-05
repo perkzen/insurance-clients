@@ -1,6 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useRouter } from 'next/router';
+import Login from '../../pages/account/login';
 
 interface Props {
   children: ReactNode;
@@ -8,11 +9,9 @@ interface Props {
 
 const ProtectedRoute: FC<Props> = ({ children }) => {
   const auth = useAuth();
-  const router = useRouter();
 
   if (!auth?.user) {
-    router.push('/account/login');
-    return null;
+    return <Login />;
   }
 
   return <div>{children}</div>;

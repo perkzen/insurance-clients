@@ -28,7 +28,7 @@ export const Button: FC<ButtonProps> = ({
       onClick={onClick}
       type={type}
     >
-      {loading && <LoadingSpinner />}
+      {loading && <LoadingSpinner color={'white'} />}
       {children}
     </button>
   );

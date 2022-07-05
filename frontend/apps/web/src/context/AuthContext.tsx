@@ -14,15 +14,17 @@ import {
 } from 'firebase/auth';
 import { User } from '@firebase/auth-types';
 import { auth } from '../../firebase/config';
+import firebase from 'firebase/compat';
 
 interface IAuthContext {
   user: User | null;
-  createUser: (email: string, password: string) => any;
-  signIn: (email: string, password: string) => any;
-  logout: () => void;
+  setUser: (user: User) => void;
 }
 
-const AuthContext = createContext<IAuthContext | null>(null);
+const AuthContext = createContext<IAuthContext>({
+  user: null,
+  setUser: () => {},
+});
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -30,18 +32,6 @@ interface AuthProviderProps {
 
 export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
-
-  const createUser = (email: string, password: string) => {
-    return createUserWithEmailAndPassword(auth, email, password);
-  };
-
-  const signIn = (email: string, password: string) => {
-    return signInWithEmailAndPassword(auth, email, password);
-  };
-
-  const logout = () => {
-    return signOut(auth);
-  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -55,7 +45,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, createUser, signIn, logout }}>
+    <AuthContext.Provider value={{ user, setUser }}>
       {children}
     </AuthContext.Provider>
   );

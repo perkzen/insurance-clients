@@ -1,9 +1,13 @@
 import { FC } from 'react';
 
-export const LoadingSpinner: FC = () => {
+interface Props {
+  color?: 'white' | 'neutral-900' | 'red-600';
+}
+
+export const LoadingSpinner: FC<Props> = ({ color = 'neutral-900' }) => {
   return (
     <svg
-      className={`animate-spin -ml-1 mr-3 h-5 w-5 text-neutral-900`}
+      className={`animate-spin -ml-1 mr-3 h-5 w-5 text-${color}`}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"

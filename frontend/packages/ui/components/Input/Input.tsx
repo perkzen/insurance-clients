@@ -21,7 +21,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             errorMessage ? classes.InputError : ''
           )}
         />
-        {errorMessage && <small>{errorMessage}</small>}
+        {errorMessage && <small className={'ml-4'}>{errorMessage}</small>}
       </div>
     );
   }

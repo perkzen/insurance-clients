@@ -11,16 +11,17 @@
   "dependencies": {
     "axios": "^0.27.2",
     "firebase": "^9.8.4",
+    "manage-damage-claims": "*",
+    "manage-insurances": "*",
     "next": "12.0.8",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-hook-form": "^7.33.1",
     "react-hot-toast": "^2.2.0",
     "react-query": "^3.39.1",
     "sass": "^1.53.0",
-    "ui": "*",
     "shared-types": "*",
-    "manage-insurances": "*",
-    "manage-damage-claims": "*"
+    "ui": "*"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
