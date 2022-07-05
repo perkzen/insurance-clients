@@ -10,6 +10,9 @@ services:
     volumes:
       - volCompensationManagerDB:/var/lib/postgresql/data
     restart: always
+  backend:
+    build: .
+    restart: always
 
 volumes:
   volCompensationManagerDB:
