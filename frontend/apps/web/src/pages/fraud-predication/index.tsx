@@ -1,11 +1,14 @@
 import React from 'react';
 import { FraudPredictionForm } from 'manage-damage-claims';
+import ProtectedRoute from '../../components/ProtectedRoute/ProtectedRoute';
 
 const FraudPrediction = () => {
   return (
-    <div className={'flex flex-col justify-center items-center'}>
-      <FraudPredictionForm />
-    </div>
+    <ProtectedRoute>
+      <div className={'flex flex-col justify-center items-center'}>
+        <FraudPredictionForm />
+      </div>
+    </ProtectedRoute>
   );
 };
 
