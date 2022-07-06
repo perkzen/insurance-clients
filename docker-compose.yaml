@@ -54,13 +54,16 @@ services:
       restart: always
       ports:
         - "8081:8801"
+      depends_on:
+        - damage-claims-db
+
   fraud-prediction-service:
       build: ./backend/fraud-detection-service
       ports:
         - "5001:5000"
       environment:
         - PROJECT=perko.domen/fraud-detection
-        - API_TOKEN=eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiJjYjFiOWYwYi0xMzkyLTQ3Y2ItYmRhZi1mM2MxMjlmNGVjZmYifQ==
+        - API_TOKEN=${API_TOKEN}
         - MODEL=FRAUD-MLP
         - STAGE=production
 

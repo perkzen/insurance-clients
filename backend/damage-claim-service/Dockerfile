@@ -10,13 +10,10 @@ COPY go.mod .
 COPY go.sum .
 RUN go mod download
 
-ENV DB_CONNECTION_STRING=postgresql://admin:admin@localhost:1000/damageClaimsDB?sslmode=disable
+ENV DB_CONNECTION_STRING=postgresql://admin:admin@db:1000/damageClaimsDB?sslmode=disable
 ENV PORT=:8081
 
-
 COPY . .
-
-
 
 RUN go build -o ./app ./cmd/main.go
 

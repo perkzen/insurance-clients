@@ -1,5 +1,5 @@
 services:
-  postgres:
+  db:
     image: postgres:13
     ports:
       - "1000:5432"
@@ -13,6 +13,8 @@ services:
   backend:
     build: .
     restart: always
+    depends_on:
+      - db
 
 volumes:
   volCompensationManagerDB:
