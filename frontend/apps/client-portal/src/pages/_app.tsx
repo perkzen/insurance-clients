@@ -4,6 +4,7 @@ import { Layout } from '../components/Layout/Layout';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from '../context/AuthContext';
+import Head from 'next/head';
 
 const queryClient = new QueryClient();
 
@@ -13,6 +14,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       <QueryClientProvider client={queryClient}>
         <Toaster position={'top-right'} />
         <Layout>
+          <Head>
+            <title>Client portal</title>
+            <link rel="icon" type="image/png" href="/car.png" />
+          </Head>
           <Component {...pageProps} />
         </Layout>
       </QueryClientProvider>

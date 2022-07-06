@@ -1,7 +1,7 @@
 import React from 'react';
 import Navigation from '../Navigation/Navigation';
 import Image from 'next/image';
-import logo from '../../../assets/car.png';
+import logo from '../../../public/car.png';
 
 export const Sidebar = () => {
   return (
