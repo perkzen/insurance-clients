@@ -71,12 +71,6 @@ const Login = () => {
           {...register('password', { required: 'This field is required!' })}
           errorMessage={errors.password?.message}
         />
-        <span className={'text-neutral-600 mt-2 ml-4'}>
-          Don&apos;t have an account?
-          <Link href="/account/register">
-            <a className={'text-red-600'}> Register here</a>
-          </Link>
-        </span>
         <Button loading={loading} className={'mt-4'}>
           Login
         </Button>

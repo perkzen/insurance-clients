@@ -3,8 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import { CreateInsuranceDto } from './dto/create-insurance.dto';
 import axios from 'axios';
 import { Insurance } from '../../types/Insurance';
-import { UpdateInsuranceClientDto } from '../insurance-clients/dto/update-insurance-client.dto';
-import { contains } from 'class-validator';
+import { filterList } from '../../utils/filter';
 
 @Injectable()
 export class InsurancesService {
@@ -76,18 +75,17 @@ export class InsurancesService {
   async filter(query: { firstname: string; lastname: string; reg: string }) {
     try {
       const { data } = await axios.get(this.INSURANCE_MICROSERVICE);
+
+      if (!query.reg) {
+        return filterList(
+          data,
+          `${query.firstname} ${
+            query.lastname !== 'undefined' ? query.lastname : ''
+          }`,
+        );
+      }
+
       return data.filter((item: Insurance) => {
-        if (
-          item.firstname.includes(query.firstname) &&
-          query.firstname !== ''
-        ) {
-          return true;
-        }
-
-        if (item.lastname.includes(query.lastname) && query.lastname !== '') {
-          return true;
-        }
-
         if (item.vehicleRegistration.includes(query.reg) && query.reg !== '') {
           return true;
         }
